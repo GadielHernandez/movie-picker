@@ -1,0 +1,27 @@
+{
+    "data": [
+        { "id": "category-1", "title": "Mejor película" },
+        { "id": "category-2", "title": "Mejor director" },
+        { "id": "category-3", "title": "Mejor actriz" },
+        { "id": "category-4", "title": "Mejor actor" },
+        { "id": "category-5", "title": "Mejor actor de reparto" },
+        { "id": "category-6", "title": "Mejor actriz de reparto" },
+        { "id": "category-7", "title": "Mejor guión adaptado" },
+        { "id": "category-8", "title": "Mejor guión original" },
+        { "id": "category-9", "title": "Mejor edición" },
+        { "id": "category-10", "title": "Mejor cinematografía" },
+        { "id": "category-11", "title": "Mejor diseño de vestuario" },
+        { "id": "category-12", "title": "Mejor diseño de producción" },
+        { "id": "category-13", "title": "Mejor música" },
+        { "id": "category-14", "title": "Mejor canción" },
+        { "id": "category-15", "title": "Mejor sonido" },
+        { "id": "category-16", "title": "Mejor maquillaje y peinado" },
+        { "id": "category-17", "title": "Mejores efectos visuales" },
+        { "id": "category-18", "title": "Mejor película animada" },
+        { "id": "category-19", "title": "Mejor película documental" },
+        { "id": "category-20", "title": "Mejor película internacional" },
+        { "id": "category-21", "title": "Mejor cortometraje animado" },
+        { "id": "category-22", "title": "Mejor corto documental" },
+        { "id": "category-23", "title": "Mejor corto de acción real" }
+    ]
+}
