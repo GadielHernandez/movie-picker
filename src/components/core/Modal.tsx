@@ -52,7 +52,9 @@ const Modal = ({
                         </svg>
                     </button>
                 </header>
-                <main className="p-4 text-left">{children}</main>
+                <main className="p-4 text-left max-h-[70vh] overflow-scroll">
+                    {children}
+                </main>
                 <footer className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b gap-4">
                     <Button outline onClick={onCancel}>
                         Cancelar

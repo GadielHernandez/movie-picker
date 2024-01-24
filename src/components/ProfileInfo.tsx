@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import EditProfile from './EditProfile.tsx'
+import Avatar from './Avatar.tsx'
 
 interface ProfileInfoProps {
     initialProfile: IProfile
@@ -26,13 +27,21 @@ export default function ProfileInfo({ initialProfile }: ProfileInfoProps) {
         setProfile(newProfile)
     }
 
+    const handleNewProfileImage = (image: string) => {
+        const newProfile = {
+            ...profile,
+            image,
+        }
+        setProfile(newProfile)
+    }
+
     return (
         <div className="flex flex-col gap-4 items-center text-center">
-            <img
-                src={`/img/avatar/${profile.image}`}
-                alt={`${profile.name} Avatar`}
-                className="h-36 w-36 rounded-full"
+            <Avatar
+                initialAvatar={profile.image}
+                onSaveImage={handleNewProfileImage}
             />
+
             <div>
                 <h1 className="text-3xl tracking-tight font-bold truncate">
                     {profile.name}
