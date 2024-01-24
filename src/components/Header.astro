@@ -1,0 +1,16 @@
+---
+import CardContainer from "./CardContainer.astro.tsx";
+import ProfileInfo from "./ProfileInfo.tsx";
+const Profile = {
+    name: 'Gadiel Hernandez',
+    image: 'avatar-10.png',
+    description: '🎬 Aficionado del cine '
+}
+---
+
+<header>
+    <ProfileInfo 
+        initialProfile={Profile}
+        client:load
+    />
+</header>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CardContainer from '../components/CardContainer.astro';
+import Header from '../components/Header.astro';
+import Grid from '../components/Grid.astro';
 
 import { GET } from './api/movies.json'
 
@@ -11,8 +12,6 @@ const movies = await response.json()
 
 <Layout title="Movie Tipsters" description="Pagina para hacer quiniela o predicciones de los ganadores de los Oscars 2024">
 	<main>
-		<CardContainer>
-			
-		</CardContainer>
+		<Header/>
 	</main>
 </Layout>
