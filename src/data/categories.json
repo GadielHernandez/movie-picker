@@ -1,27 +1,808 @@
 {
     "data": [
-        { "id": "category-1", "title": "Mejor película" },
-        { "id": "category-2", "title": "Mejor director" },
-        { "id": "category-3", "title": "Mejor actriz" },
-        { "id": "category-4", "title": "Mejor actor" },
-        { "id": "category-5", "title": "Mejor actor de reparto" },
-        { "id": "category-6", "title": "Mejor actriz de reparto" },
-        { "id": "category-7", "title": "Mejor guión adaptado" },
-        { "id": "category-8", "title": "Mejor guión original" },
-        { "id": "category-9", "title": "Mejor edición" },
-        { "id": "category-10", "title": "Mejor cinematografía" },
-        { "id": "category-11", "title": "Mejor diseño de vestuario" },
-        { "id": "category-12", "title": "Mejor diseño de producción" },
-        { "id": "category-13", "title": "Mejor música" },
-        { "id": "category-14", "title": "Mejor canción" },
-        { "id": "category-15", "title": "Mejor sonido" },
-        { "id": "category-16", "title": "Mejor maquillaje y peinado" },
-        { "id": "category-17", "title": "Mejores efectos visuales" },
-        { "id": "category-18", "title": "Mejor película animada" },
-        { "id": "category-19", "title": "Mejor película documental" },
-        { "id": "category-20", "title": "Mejor película internacional" },
-        { "id": "category-21", "title": "Mejor cortometraje animado" },
-        { "id": "category-22", "title": "Mejor corto documental" },
-        { "id": "category-23", "title": "Mejor corto de acción real" }
+        {
+            "id": "category-1",
+            "title": "Mejor película",
+            "relevant": true,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 1056360,
+                    "name": "American Fiction"
+                },
+                {
+                    "id": 2,
+                    "movieid": 915935,
+                    "name": "Anatomía de una caída"
+                },
+                {
+                    "id": 3,
+                    "movieid": 346698,
+                    "name": "Barbie"
+                },
+                {
+                    "id": 4,
+                    "movieid": 267960,
+                    "name": "Los que se quedan"
+                },
+                {
+                    "id": 5,
+                    "movieid": 466420,
+                    "name": "Los asesinos de la luna"
+                },
+                {
+                    "id": 6,
+                    "movieid": 523607,
+                    "name": "Maestro"
+                },
+                {
+                    "id": 7,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 8,
+                    "movieid": 666277,
+                    "name": "Vidas pasadas"
+                },
+                {
+                    "id": 9,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                },
+                {
+                    "id": 10,
+                    "movieid": 467244,
+                    "name": "The Zone of Interest"
+                }
+            ]
+        },
+        {
+            "id": "category-5",
+            "title": "Mejor actor de reparto",
+            "relevant": false,
+            "type": "ACTOR",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 1056360,
+                    "personId": 1225953,
+                    "name": "Sterling K. Brown"
+                },
+                {
+                    "id": 2,
+                    "movieid": 466420,
+                    "personId": 380,
+                    "name": "Robert De Niro"
+                },
+                {
+                    "id": 3,
+                    "movieid": 872585,
+                    "personId": 3223,
+                    "name": "Robert Downey Jr."
+                },
+                {
+                    "id": 4,
+                    "movieid": 346698,
+                    "personId": 30614,
+                    "name": "Ryan Gosling"
+                },
+                {
+                    "id": 5,
+                    "movieid": 792307,
+                    "personId": 103,
+                    "name": "Mark Ruffalo"
+                }
+            ]
+        },
+        {
+            "id": "category-6",
+            "title": "Mejor actriz de reparto",
+            "relevant": false,
+            "type": "ACTOR",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 872585,
+                    "personId": 5081,
+                    "name": "Emily Blunt"
+                },
+                {
+                    "id": 2,
+                    "movieid": null,
+                    "personId": 1075037,
+                    "name": "Danielle Brooks"
+                },
+                {
+                    "id": 3,
+                    "movieid": 346698,
+                    "personId": 59174,
+                    "name": "America Ferrera"
+                },
+                {
+                    "id": 4,
+                    "movieid": null,
+                    "personId": 1038,
+                    "name": "Jodie Foster"
+                },
+                {
+                    "id": 5,
+                    "movieId": 267960,
+                    "personId": 1180099,
+                    "name": "Da’vine Joy Randolph"
+                }
+            ]
+        },
+        {
+            "id": "category-2",
+            "title": "Mejor director",
+            "relevant": true,
+            "type": "DIRECTOR",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieId": 915935,
+                    "personId": 1175620,
+                    "name": "Justine Triet"
+                },
+                {
+                    "id": 2,
+                    "movieId": 466420,
+                    "personId": 1032,
+                    "name": "Martin Scorsese"
+                },
+                {
+                    "id": 3,
+                    "movieid": 872585,
+                    "personId": 525,
+                    "name": "Christopher Nolan"
+                },
+                {
+                    "id": 4,
+                    "movieId": 792307,
+                    "personId": 122423,
+                    "name": "Yorgos Lanthimos"
+                },
+                {
+                    "id": 5,
+                    "movieId": 467244,
+                    "personId": 66728,
+                    "name": "Jonathan Glazer"
+                }
+            ]
+        },
+        {
+            "id": "category-3",
+            "title": "Mejor actriz",
+            "type": "ACTOR",
+            "relevant": true,
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": null,
+                    "personId": 516,
+                    "name": "Annette Bening"
+                },
+                {
+                    "id": 2,
+                    "movieId": 466420,
+                    "personId": 1183917,
+                    "name": "Lily Gladstone"
+                },
+                {
+                    "id": 3,
+                    "movieId": 915935,
+                    "personId": 7152,
+                    "name": "Sandra Hüller"
+                },
+                {
+                    "id": 4,
+                    "movieid": 523607,
+                    "personId": 36662,
+                    "name": "Carey Mulligan"
+                },
+                {
+                    "id": 5,
+                    "movieid": 792307,
+                    "personId": 54693,
+                    "name": "Emma Stone"
+                }
+            ]
+        },
+        {
+            "id": "category-10",
+            "title": "Mejor cinematografía",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": null,
+                    "name": "El Conde"
+                },
+                {
+                    "id": 2,
+                    "movieid": 466420,
+                    "name": "Los asesinos de la luna"
+                },
+                {
+                    "id": 3,
+                    "movieid": 523607,
+                    "name": "Maestro"
+                },
+                {
+                    "id": 4,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 5,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                }
+            ]
+        },
+        {
+            "id": "category-9",
+            "title": "Mejor edición",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 915935,
+                    "name": "Anatomía de una caída"
+                },
+                {
+                    "id": 2,
+                    "movieid": 267960,
+                    "name": "Los que se quedan"
+                },
+                {
+                    "id": 3,
+                    "movieid": 466420,
+                    "name": "Los asesinos de la luna"
+                },
+                {
+                    "id": 4,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 5,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                }
+            ]
+        },
+        {
+            "id": "category-4",
+            "title": "Mejor actor",
+            "relevant": true,
+            "type": "ACTOR",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 523607,
+                    "name": "Bradley Cooper"
+                },
+                {
+                    "id": 2,
+                    "movieid": null,
+                    "name": "Colman Domingo"
+                },
+                {
+                    "id": 3,
+                    "movieid": 267960,
+                    "name": "Paul Giamatti"
+                },
+                {
+                    "id": 4,
+                    "movieid": 872585,
+                    "name": "Cillian Murphy"
+                },
+                {
+                    "id": 5,
+                    "movieid": 1056360,
+                    "name": "Jeffrey Wright"
+                }
+            ]
+        },
+        {
+            "id": "category-18",
+            "title": "Mejor película animada",
+            "relevant": true,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 508883,
+                    "name": "El niño y la garza"
+                },
+                {
+                    "id": 2,
+                    "movieid": 976573,
+                    "name": "Elemental"
+                },
+                {
+                    "id": 3,
+                    "movieid": 961323,
+                    "name": "Nimona"
+                },
+                {
+                    "id": 4,
+                    "movieid": 838240,
+                    "name": "Robot Dreams"
+                },
+                {
+                    "id": 5,
+                    "movieid": 569094,
+                    "name": "Spider-Man: Across the Spider-Verse"
+                }
+            ]
+        },
+        {
+            "id": "category-7",
+            "title": "Mejor guion adaptado",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 1056360,
+                    "name": "American Fiction"
+                },
+                {
+                    "id": 2,
+                    "movieid": 346698,
+                    "name": "Barbie"
+                },
+                {
+                    "id": 3,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 4,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                },
+                {
+                    "id": 5,
+                    "movieid": 467244,
+                    "name": "The Zone of Interest"
+                }
+            ]
+        },
+        {
+            "id": "category-8",
+            "title": "Mejor guion original",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 915935,
+                    "name": "Anatomía de una caída"
+                },
+                {
+                    "id": 2,
+                    "movieid": 267960,
+                    "name": "Los que se quedan"
+                },
+                {
+                    "id": 3,
+                    "movieid": 523607,
+                    "name": "Maestro"
+                },
+                {
+                    "id": 4,
+                    "movieid": null,
+                    "name": "May December"
+                },
+                {
+                    "id": 5,
+                    "movieid": 666277,
+                    "name": "Vidas pasadas"
+                }
+            ]
+        },
+        {
+            "id": "category-11",
+            "title": "Mejor diseño de vestuario",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 346698,
+                    "name": "Barbie"
+                },
+                {
+                    "id": 2,
+                    "movieid": 466420,
+                    "name": "Los asesinos de la luna"
+                },
+                {
+                    "id": 3,
+                    "movieid": null,
+                    "name": "Napoleón"
+                },
+                {
+                    "id": 4,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 5,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                }
+            ]
+        },
+        {
+            "id": "category-16",
+            "title": "Mejor maquillaje y peinado",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 899524,
+                    "name": "Golda"
+                },
+                {
+                    "id": 2,
+                    "movieid": 523607,
+                    "name": "Maestro"
+                },
+                {
+                    "id": 3,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 4,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                },
+                {
+                    "id": 5,
+                    "movieid": 906126,
+                    "name": "Society of the Snow"
+                }
+            ]
+        },
+        {
+            "id": "category-12",
+            "title": "Mejor diseño de producción",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 346698,
+                    "name": "Barbie"
+                },
+                {
+                    "id": 2,
+                    "movieid": 466420,
+                    "name": "Los asesinos de la luna"
+                },
+                {
+                    "id": 3,
+                    "movieid": null,
+                    "name": "Napoleón"
+                },
+                {
+                    "id": 4,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 5,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                }
+            ]
+        },
+        {
+            "id": "category-20",
+            "title": "Mejor película internacional",
+            "relevant": true,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 937746,
+                    "name": "Io Capitano"
+                },
+                {
+                    "id": 2,
+                    "movieid": 976893,
+                    "name": "Perfect Days"
+                },
+                {
+                    "id": 3,
+                    "movieid": 998022,
+                    "name": "The Teachers’ Lounge"
+                },
+                {
+                    "id": 4,
+                    "movieid": 906126,
+                    "name": "Society of the Snow"
+                },
+                {
+                    "id": 5,
+                    "movieid": 467244,
+                    "name": "The Zone of Interest"
+                }
+            ]
+        },
+        {
+            "id": "category-13",
+            "title": "Mejor música",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 1056360,
+                    "name": "American Fiction"
+                },
+                {
+                    "id": 2,
+                    "movieId": 335977,
+                    "name": "Indiana Jones and the Dial of Destiny"
+                },
+                {
+                    "id": 3,
+                    "movieid": 466420,
+                    "name": "Los asesinos de la luna"
+                },
+                {
+                    "id": 4,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 5,
+                    "movieid": 792307,
+                    "name": "Pobres criaturas"
+                }
+            ]
+        },
+        {
+            "id": "category-14",
+            "title": "Mejor canción",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 626332,
+                    "name": "The Fire Inside de Flamin’ Hot"
+                },
+                {
+                    "id": 2,
+                    "movieid": 346698,
+                    "name": "I’m Just Ken de Barbie"
+                },
+                {
+                    "id": 3,
+                    "movieId": 1171816,
+                    "name": "It Never Went Away de American Symphony"
+                },
+                {
+                    "id": 4,
+                    "movieId": 466420,
+                    "name": "Wahzhazhe (A Song for My People) de Los asesinos de la luna"
+                },
+                {
+                    "id": 5,
+                    "movieid": 346698,
+                    "name": "What I was Made For de Barbie"
+                }
+            ]
+        },
+        {
+            "id": "category-15",
+            "title": "Mejor sonido",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 670292,
+                    "name": "The Creator"
+                },
+                {
+                    "id": 2,
+                    "movieid": 523607,
+                    "name": "Maestro"
+                },
+                {
+                    "id": 3,
+                    "movieId": 575264,
+                    "name": "Mission: Impossible - Dead Reckoning Part One"
+                },
+                {
+                    "id": 4,
+                    "movieid": 872585,
+                    "name": "Oppenheimer"
+                },
+                {
+                    "id": 5,
+                    "movieid": 467244,
+                    "name": "The Zone of Interest"
+                }
+            ]
+        },
+        {
+            "id": "category-17",
+            "title": "Mejores efectos visuales",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 670292,
+                    "name": "The Creator"
+                },
+                {
+                    "id": 2,
+                    "movieid": 940721,
+                    "name": "Godzilla Minus One"
+                },
+                {
+                    "id": 3,
+                    "movieid": 447365,
+                    "name": "Guardians of the Galaxy Vol. 3"
+                },
+                {
+                    "id": 4,
+                    "movieId": 575264,
+                    "name": "Mission: Impossible - Dead Reckoning Part One"
+                },
+                {
+                    "id": 5,
+                    "movieid": 753342,
+                    "name": "Napoleon"
+                }
+            ]
+        },
+        {
+            "id": "category-19",
+            "title": "Mejor película documental",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 1004683,
+                    "name": "Bobi Wine: The People’s President"
+                },
+                {
+                    "id": 2,
+                    "movieid": 1032760,
+                    "name": "The Eternal Memory"
+                },
+                {
+                    "id": 3,
+                    "movieid": 1069193,
+                    "name": "Four Daughters"
+                },
+                {
+                    "id": 4,
+                    "movieid": 1015356,
+                    "name": "To Kill a Tiger"
+                },
+                {
+                    "id": 5,
+                    "movieid": 1058616,
+                    "name": "20 Days in Mariupol"
+                }
+            ]
+        },
+        {
+            "id": "category-21",
+            "title": "Mejor cortometraje animado",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": null,
+                    "name": "Letter to a Pig"
+                },
+                {
+                    "id": 2,
+                    "movieid": null,
+                    "name": "Ninety-Five Senses"
+                },
+                {
+                    "id": 3,
+                    "movieid": null,
+                    "name": "Our Uniform"
+                },
+                {
+                    "id": 4,
+                    "movieid": null,
+                    "name": "Pachyderme"
+                },
+                {
+                    "id": 5,
+                    "movieId": null,
+                    "name": "War is Over. Inspired by the Music of John and Yoko"
+                }
+            ]
+        },
+        {
+            "id": "category-22",
+            "title": "Mejor corto documental",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": null,
+                    "name": "The ABCs of Book Banning"
+                },
+                {
+                    "id": 2,
+                    "movieid": null,
+                    "name": "The Barber of Little Rock"
+                },
+                {
+                    "id": 3,
+                    "movieid": null,
+                    "name": "Island in Between"
+                },
+                {
+                    "id": 4,
+                    "movieid": null,
+                    "name": "The Last Repair Shop"
+                },
+                {
+                    "id": 5,
+                    "movieid": null,
+                    "name": "Nǎi Nai and Wài Pó"
+                }
+            ]
+        },
+        {
+            "id": "category-23",
+            "title": "Mejor corto de acción real",
+            "relevant": false,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": null,
+                    "name": "The After"
+                },
+                {
+                    "id": 2,
+                    "movieid": null,
+                    "name": "Invincible"
+                },
+                {
+                    "id": 3,
+                    "movieid": null,
+                    "name": "Knight of Fortune"
+                },
+                {
+                    "id": 4,
+                    "movieid": null,
+                    "name": "Red, White and Blue"
+                },
+                {
+                    "id": 5,
+                    "movieid": null,
+                    "name": "The Wonderful Story of Henry Sugar"
+                }
+            ]
+        }
     ]
 }

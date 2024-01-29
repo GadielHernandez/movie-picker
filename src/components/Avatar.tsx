@@ -44,7 +44,7 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                 onClick={openModal}
             >
                 <div
-                    className="flex items-center justify-center w-full h-full bg-contain bg-center bg-no-repeat duration-500 group-hover:brightness-50 group:"
+                    className="flex items-center justify-center w-full h-full bg-contain bg-center bg-no-repeat duration-500 group-hover:brightness-50"
                     style={{
                         backgroundImage: `url('/img/avatar/${image}')`,
                     }}

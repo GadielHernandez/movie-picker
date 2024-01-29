@@ -1,5 +1,5 @@
 ---
-import CardContainer from "./CardContainer.astro.tsx";
+import ImageCover from "./ImageCover.tsx";
 import ProfileInfo from "./ProfileInfo.tsx";
 const Profile = {
     name: 'Gadiel Hernandez',
@@ -9,6 +9,7 @@ const Profile = {
 ---
 
 <header>
+    <!-- <ImageCover ></ImageCover> -->
     <ProfileInfo 
         initialProfile={Profile}
         client:load

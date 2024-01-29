@@ -25,9 +25,9 @@ const Modal = ({
             tabIndex={-1}
             className="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center bg-slate-950/30 w-screen h-screen"
         >
-            <div className="m-auto bg-white rounded-lg shadow min-h-72 w-10/12 md:w-1/2">
-                <header className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                    <h3 className="text-lg font-semibold text-gray-900">
+            <div className="m-auto bg-slate-800 rounded-lg shadow min-h-72 w-10/12 md:w-1/2">
+                <header className="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-slate-950">
+                    <h3 className="text-lg font-semibold text-white">
                         {title}
                     </h3>
                     <button
@@ -55,7 +55,7 @@ const Modal = ({
                 <main className="p-4 text-left max-h-[70vh] overflow-scroll">
                     {children}
                 </main>
-                <footer className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b gap-4">
+                <footer className="flex items-center justify-end p-4 md:p-5 border-t border-slate-950 rounded-b gap-4">
                     <Button outline onClick={onCancel}>
                         Cancelar
                     </Button>

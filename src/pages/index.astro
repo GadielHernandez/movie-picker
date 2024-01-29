@@ -2,16 +2,46 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Grid from '../components/Grid.astro';
+import Category from '../components/Category.tsx';
+import { type GetApiCategories } from '../models/categories/category.interfaces.ts';
 
-import { GET } from './api/movies.json'
+import { GET } from './api/categories.json';
 
-let response = await GET(Astro)
-const movies = await response.json()
+import { getMovies } from './api/movies.json';
+import type { MoviesJson } from '../models/movie/movie.intefaces';
+
+import { getPersons } from './api/persons.json';
+import { type PersonsJson } from '../models/persons/person.interfaces';
+
+let requestCategories = await GET(Astro)
+const categories: GetApiCategories = await requestCategories.json()
+
+const requestMovies = await getMovies(Astro)
+const movies: MoviesJson = await requestMovies.json()
+
+const requestPersons = await getPersons(Astro)
+const persons: PersonsJson = await requestPersons.json()
+
+categories.data.forEach( category => {
+	category.nominates.forEach( nominate => {
+		nominate.movie = movies.data.find( movie => movie.id === nominate.movieid)
+		if(nominate.personId) nominate.person = persons.data.find( person => person.id === nominate.personId)
+	})
+});
 
 ---
 
 <Layout title="Movie Tipsters" description="Pagina para hacer quiniela o predicciones de los ganadores de los Oscars 2024">
 	<main>
 		<Header/>
+		<Grid>
+			{categories.data.map((category) => (
+				<Category 
+					client:load
+					category={category}
+					width={category.relevant ? 2 : 1}
+				/>
+			))}
+		</Grid>
 	</main>
 </Layout>
