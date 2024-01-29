@@ -29,7 +29,7 @@ export default function CategoryOptions({
     }
 
     const unselectedClasses =
-        'border-slate-950 hover:bg-slate-900 text-amber-400'
+        'border-neutral-900 hover:bg-neutral-950 text-amber-400'
     const selectedClasses =
         'bg-amber-500 border-amber-500 hover:bg-amber-600 text-white'
 
@@ -59,7 +59,7 @@ export default function CategoryOptions({
             >
                 {category.nominates.map((nominated) => (
                     <div
-                        className={`flex flex-col items-center text-center border cursor-pointer overflow-hidden rounded-lg ${
+                        className={`flex flex-col items-center text-center border cursor-pointer overflow-hidden rounded-md shadow-stone-950 shadow-lg ${
                             selected === nominated.id
                                 ? selectedClasses
                                 : unselectedClasses

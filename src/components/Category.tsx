@@ -69,7 +69,7 @@ export default function Category({
     return (
         <>
             <article
-                className={`rounded-lg border border-amber-500 shadow-lg overflow-hidden row-span-1 col-span-${width} p-2 h-full group cursor-pointer`}
+                className={`rounded-lg border border-amber-500 shadow-sm shadow-neutral-950 overflow-hidden row-span-1 col-span-${width} p-2 h-full group cursor-pointer`}
                 onClick={() => setOpen(true)}
                 style={{
                     background:
@@ -97,7 +97,20 @@ export default function Category({
                             {category.title}
                         </h1>
                     </div>
-                    <div className="absolute transition-all opacity-0 group-hover:opacity-100 duration-500 top-1/3 left-1/2 transform -translate-x-1/2"></div>
+                    <div className="absolute transition-all opacity-50 group-hover:opacity-100 duration-500 top-1/3 left-1/2 transform -translate-x-1/2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="w-6 h-6"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </div>
                 </main>
             </article>
 

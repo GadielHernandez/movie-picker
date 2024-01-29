@@ -508,39 +508,6 @@
             ]
         },
         {
-            "id": "category-20",
-            "title": "Mejor película internacional",
-            "relevant": true,
-            "type": "MOVIES",
-            "nominates": [
-                {
-                    "id": 1,
-                    "movieid": 937746,
-                    "name": "Io Capitano"
-                },
-                {
-                    "id": 2,
-                    "movieid": 976893,
-                    "name": "Perfect Days"
-                },
-                {
-                    "id": 3,
-                    "movieid": 998022,
-                    "name": "The Teachers’ Lounge"
-                },
-                {
-                    "id": 4,
-                    "movieid": 906126,
-                    "name": "Society of the Snow"
-                },
-                {
-                    "id": 5,
-                    "movieid": 467244,
-                    "name": "The Zone of Interest"
-                }
-            ]
-        },
-        {
             "id": "category-13",
             "title": "Mejor música",
             "relevant": false,
@@ -631,6 +598,39 @@
                     "id": 4,
                     "movieid": 872585,
                     "name": "Oppenheimer"
+                },
+                {
+                    "id": 5,
+                    "movieid": 467244,
+                    "name": "The Zone of Interest"
+                }
+            ]
+        },
+        {
+            "id": "category-20",
+            "title": "Mejor película internacional",
+            "relevant": true,
+            "type": "MOVIES",
+            "nominates": [
+                {
+                    "id": 1,
+                    "movieid": 937746,
+                    "name": "Io Capitano"
+                },
+                {
+                    "id": 2,
+                    "movieid": 976893,
+                    "name": "Perfect Days"
+                },
+                {
+                    "id": 3,
+                    "movieid": 998022,
+                    "name": "The Teachers’ Lounge"
+                },
+                {
+                    "id": 4,
+                    "movieid": 906126,
+                    "name": "Society of the Snow"
                 },
                 {
                     "id": 5,
