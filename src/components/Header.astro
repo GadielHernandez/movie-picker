@@ -1,20 +1,18 @@
 ---
-import ImageCover from "./ImageCover.tsx";
 import ProfileInfo from "./ProfileInfo.tsx";
-const Profile = {
-    name: 'Gadiel Hernandez',
-    image: 'avatar-10.png',
-    description: '🎬 Aficionado del cine '
-}
+const Profile = null
 ---
 
 <header class="flex flex-col md:flex-row mb-16 gap-4">
-    <!-- <ImageCover ></ImageCover> -->
     <div class="w-2/3 order-2 md:order-1">
-        <ProfileInfo
-        initialProfile={Profile}
-        client:load
-    />
+        { Profile 
+            ? <ProfileInfo client:load initialProfile={Profile}/>
+            : 
+            <h1 class="text-5xl font-light max-w-96 my-auto">
+                Predicciones de los Oscars
+            </h1>
+            <p class="font-semibold mt-6 text-neutral-400">Inicia sesiòn para guardar tus elecciones</p>
+        }
     </div>
     <div class="flex items-top justify-start md:justify-center w-1/3 order-1 md:order-2">
         <img src="/img/oscars.png" alt="Oscars Logo" class="h-20 md:h-36">
