@@ -544,17 +544,17 @@
             "id": "category-14",
             "title": "Mejor canción",
             "relevant": false,
-            "type": "MOVIES",
+            "type": "SONG",
             "nominates": [
                 {
                     "id": 1,
                     "movieid": 626332,
-                    "name": "The Fire Inside de Flamin’ Hot"
+                    "name": "The Fire Inside"
                 },
                 {
                     "id": 2,
                     "movieid": 346698,
-                    "name": "I’m Just Ken de Barbie"
+                    "name": "I’m Just Ken"
                 },
                 {
                     "id": 3,
@@ -564,7 +564,7 @@
                 {
                     "id": 4,
                     "movieId": 466420,
-                    "name": "Wahzhazhe (A Song for My People) de Los asesinos de la luna"
+                    "name": "Wahzhazhe (A Song for My People)"
                 },
                 {
                     "id": 5,

@@ -10,7 +10,6 @@ interface CategoryOptionsProps {
     onCloseModal: () => void
     initialSelection?: number | string
     category: ICategory
-    horizontal?: boolean
     open: boolean
 }
 
@@ -19,7 +18,6 @@ export default function CategoryOptions({
     onNewSelection,
     initialSelection,
     category,
-    horizontal = false,
     open,
 }: CategoryOptionsProps) {
     const [selected, setSelected] = useState(initialSelection)
@@ -32,6 +30,8 @@ export default function CategoryOptions({
         'border-neutral-900 hover:bg-neutral-950 text-amber-400'
     const selectedClasses =
         'bg-amber-500 border-amber-500 hover:bg-amber-600 text-white'
+
+    const isTypeMovie = category.type === TypeCategory.MOVIE
 
     const handleOnSave = () => {
         const selectedNominate = category.nominates.find(
@@ -51,11 +51,7 @@ export default function CategoryOptions({
             title="Selecciona una opciòn"
         >
             <div
-                className={`grid grid-cols-${
-                    horizontal ? '1' : '2'
-                } md:grid-cols-${
-                    horizontal ? '3' : '4'
-                } gap-4 rounded-lg px-4 py-8`}
+                className={`grid grid-cols-2 md:grid-cols-3 gap-4 rounded-lg px-4 py-8`}
             >
                 {category.nominates.map((nominated) => (
                     <div
@@ -67,12 +63,10 @@ export default function CategoryOptions({
                         onClick={() => setSelected(nominated.id)}
                     >
                         <div
-                            className={`cursor-pointer w-full bg-cover bg-center bg-no-repeat ${
-                                horizontal ? 'h-28' : 'h-48'
-                            }`}
+                            className={`cursor-pointer w-full bg-cover bg-center bg-no-repeat h-52`}
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${
-                                    category.type === TypeCategory.MOVIE
+                                    isTypeMovie
                                         ? nominated?.movie?.poster_path ||
                                           nominated?.movie?.backdrop_path ||
                                           ''
@@ -80,10 +74,26 @@ export default function CategoryOptions({
                                 })`,
                             }}
                         />
-                        <div className="flex h-14 px-2">
-                            <p className="text-sm font-bold uppercase  my-auto">
-                                {nominated.name}
-                            </p>
+                        <div
+                            className={`flex px-2 ${
+                                isTypeMovie ? 'h-14' : 'h-20'
+                            }`}
+                        >
+                            <div className="my-auto">
+                                <p className="text-xs md:text-sm font-bold uppercase">
+                                    {nominated.name}
+                                </p>
+                                {!isTypeMovie && (
+                                    <p
+                                        className={`text-[10px] md:text-xs uppercase my-2 ${
+                                            selected !== nominated.id &&
+                                            'text-gray-400 '
+                                        }`}
+                                    >
+                                        {nominated?.movie?.title}
+                                    </p>
+                                )}
+                            </div>
                         </div>
                     </div>
                 ))}

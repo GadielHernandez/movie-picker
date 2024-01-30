@@ -97,7 +97,11 @@ export default function Category({
                             {category.title}
                         </h1>
                     </div>
-                    <div className="absolute transition-all opacity-50 group-hover:opacity-100 duration-500 top-1/3 left-1/2 transform -translate-x-1/2">
+                    <div
+                        className={`absolute ${
+                            selection && 'hidden'
+                        } transition-all opacity-50 group-hover:opacity-100 duration-500 top-1/3 left-1/2 transform -translate-x-1/2`}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
