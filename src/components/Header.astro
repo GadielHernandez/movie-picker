@@ -8,10 +8,15 @@ const Profile = {
 }
 ---
 
-<header>
+<header class="flex flex-col md:flex-row mb-16 gap-4">
     <!-- <ImageCover ></ImageCover> -->
-    <ProfileInfo 
+    <div class="w-2/3 order-2 md:order-1">
+        <ProfileInfo
         initialProfile={Profile}
         client:load
     />
+    </div>
+    <div class="flex items-top justify-start md:justify-center w-1/3 order-1 md:order-2">
+        <img src="/img/oscars.png" alt="Oscars Logo" class="h-20 md:h-36">
+    </div>
 </header>

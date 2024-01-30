@@ -5,40 +5,12 @@ import {
     type INominated,
 } from '../models/categories/category.interfaces'
 import CategoryOptions from './CategoryOptions'
-import Button from './core/Button'
 
 interface CategoryProps {
     category: ICategory
     initialSelection?: INominated
     width: number
 }
-
-const emojis: Record<any, string> = {
-    'category-1': '🏆',
-    'category-2': '🎥',
-    'category-3': '🏅',
-    'category-4': '🏅',
-    'category-5': '🙋‍♂️',
-    'category-6': '🙋‍♀️',
-    'category-7': '📝',
-    'category-8': '🔖',
-    'category-9': '🎞',
-    'category-10': '🌅 ',
-    'category-11': '🥻',
-    'category-12': '🪭',
-    'category-13': '🎶',
-    'category-14': '🎼',
-    'category-15': '🔉',
-    'category-16': '💄',
-    'category-17': '💥',
-    'category-18': '🎬 ',
-    'category-19': '🎥',
-    'category-20': '🎥',
-    'category-21': '📽',
-    'category-22': '📽',
-    'category-23': '📽',
-} as const
-
 export default function Category({
     category,
     initialSelection,
@@ -69,11 +41,12 @@ export default function Category({
     return (
         <>
             <article
-                className={`rounded-lg border border-amber-500 shadow-sm shadow-neutral-950 overflow-hidden row-span-1 col-span-${width} p-2 h-full group cursor-pointer`}
+                key={category.id}
+                className={`rounded-lg border border-amber-500 shadow-lg shadow-neutral-950 overflow-hidden row-span-1 col-span-${width} p-2 h-full group cursor-pointer`}
                 onClick={() => setOpen(true)}
                 style={{
                     background:
-                        'repeating-conic-gradient(from 30deg,#0000 0 120deg,#332102 0 180deg) 200px 115.39999999999999px, repeating-conic-gradient(from 30deg,#f59e0c 0 60deg,#956006 0 120deg,#332102 0 180deg);',
+                        'repeating-conic-gradient(from 30deg,#0000 0 120deg,#332102 0 180deg) 200px 115.39999999999999px, repeating-conic-gradient(from 30deg,#f59e0c 0 60deg,#956006 0 120deg,#332102 0 180deg)',
                     backgroundSize: '400px 231px',
                 }}
             >
@@ -86,7 +59,7 @@ export default function Category({
                         style={{
                             backgroundImage: image
                                 ? `url('https://image.tmdb.org/t/p/original${image}')`
-                                : '',
+                                : 'unset',
                         }}
                     ></div>
                     <div className="absolute bottom-3 left-3 right-3 p-0 md:p-3 tracking-wide rounded-lg z-20">

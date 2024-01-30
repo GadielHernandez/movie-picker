@@ -5,7 +5,7 @@ interface Props {
 
 const { width = 1 } = Astro.props;
 
-const clases = `shadow-lg overflow-hidden row-span-1 col-span-${width} p-6`;
+const clases = ` shadow-lg overflow-hidden row-span-1 col-span-${width} p-6`;
 ---
 <article class={clases}>
     <slot />

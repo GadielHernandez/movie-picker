@@ -18,9 +18,9 @@ export default function EditProfile({
     const [name, setName] = useState(initialProfile.name)
     const [description, setDescription] = useState(initialProfile.description)
     const [instagram, setInstagram] = useState(initialProfile.instagram || '')
-    const [youtube, setYoutube] = useState(initialProfile.youtube || '')
-    const [twitter, setTwitter] = useState(initialProfile.twitter || '')
     const [tiktok, setTiktok] = useState(initialProfile.tiktok || '')
+    const [twitter, setTwitter] = useState(initialProfile.twitter || '')
+    const [letterbox, setLetterbox] = useState(initialProfile.letterbox || '')
 
     const DESCRIPTION_MAX_LENGTH = 100
 
@@ -31,9 +31,9 @@ export default function EditProfile({
             name: setName,
             description: setDescription,
             instagram: setInstagram,
-            youtube: setYoutube,
-            twitter: setTwitter,
             tiktok: setTiktok,
+            twitter: setTwitter,
+            letterbox: setLetterbox,
         }
 
         const { id, value } = event.target
@@ -46,9 +46,9 @@ export default function EditProfile({
             name,
             description,
             instagram,
-            youtube,
-            twitter,
             tiktok,
+            twitter,
+            letterbox,
         }
 
         onNewProfileData(newProfile)
@@ -61,15 +61,15 @@ export default function EditProfile({
         setName(initialProfile.name)
         setDescription(initialProfile.description)
         setInstagram(initialProfile.instagram || '')
-        setYoutube(initialProfile.youtube || '')
-        setTwitter(initialProfile.twitter || '')
         setTiktok(initialProfile.tiktok || '')
+        setTwitter(initialProfile.twitter || '')
+        setLetterbox(initialProfile.letterbox || '')
         setModalOpen(false)
     }
 
     return (
         <>
-            <Button onClick={openModal}>Editar</Button>
+            <Button onClick={openModal}>Editar Perfil</Button>
             <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
@@ -104,12 +104,12 @@ export default function EditProfile({
                         value={instagram}
                     />
                     <Input
-                        placeholder="Link de perfil de Youtube"
+                        placeholder="Link de perfil de Tiktok"
                         type="text"
-                        id="youtube"
-                        icon="youtube.svg"
+                        id="tiktok"
+                        icon="tiktok.svg"
                         onChange={handleChange}
-                        value={youtube}
+                        value={tiktok}
                     />
                     <Input
                         placeholder="Link de perfil de Twitter"
@@ -120,12 +120,12 @@ export default function EditProfile({
                         value={twitter}
                     />
                     <Input
-                        placeholder="Link de perfil de Tiktok"
+                        placeholder="Link de perfil de Letterbox"
                         type="text"
-                        id="tiktok"
-                        icon="tiktok.svg"
+                        id="letterbox"
+                        icon="letterbox.svg"
                         onChange={handleChange}
-                        value={tiktok}
+                        value={letterbox}
                     />
                 </div>
             </Modal>

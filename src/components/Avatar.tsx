@@ -40,7 +40,7 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
     return (
         <>
             <div
-                className="flex relative h-36 w-36 rounded-full overflow-hidden group cursor-pointer"
+                className="flex relative h-28 w-28 rounded-full overflow-hidden group cursor-pointer"
                 onClick={openModal}
             >
                 <div
@@ -83,7 +83,7 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                         />
                     </div>
 
-                    <div className="grid auto-rows-[100px] grid-cols-2 md:grid-cols-4 gap-4 border rounded-lg px-4 py-8">
+                    <div className="grid auto-rows-[100px] grid-cols-2 md:grid-cols-4 gap-8 border rounded-lg px-4 py-8">
                         {avatarList.map((avatar) => (
                             <div className="flex items-center justify-center">
                                 <img
@@ -92,7 +92,7 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                                     alt="Selected avatar"
                                     className={`h-28 w-28 rounded-full cursor-pointer ${
                                         avatar === image &&
-                                        'ring-4 ring-cyan-500'
+                                        'ring-8 ring-amber-400'
                                     }`}
                                     onClick={() => setImage(avatar)}
                                 />

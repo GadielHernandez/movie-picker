@@ -55,6 +55,7 @@ export default function CategoryOptions({
             >
                 {category.nominates.map((nominated) => (
                     <div
+                        key={nominated.id}
                         className={`flex flex-col items-center text-center border cursor-pointer overflow-hidden rounded-md shadow-stone-950 shadow-lg ${
                             selected === nominated.id
                                 ? selectedClasses
