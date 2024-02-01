@@ -1,3 +1,10 @@
+import { useState, type ChangeEvent } from 'react'
+
+interface Validator {
+    validation: (value: string) => boolean
+    message: string
+}
+
 interface InputProps {
     label?: string
     value?: string
@@ -5,8 +12,10 @@ interface InputProps {
     type: string
     id: string
     icon?: string
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+    validators?: Validator[]
 }
+
 export default function input({
     placeholder,
     value,
@@ -15,13 +24,29 @@ export default function input({
     icon,
     label,
     onChange,
+    validators,
 }: InputProps) {
+    const [error, setError] = useState<string | null>(null)
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (onChange) onChange(e)
+
+        validators?.some((validator) => {
+            if (!validator.validation(e.target.value)) {
+                setError(validator.message)
+                return true
+            }
+            setError(null)
+            return false
+        })
+    }
+
     return (
         <div className="mb-5">
             {label && (
                 <label
                     htmlFor="description"
-                    className="block mb-2 text-sm font-medium text-slate-900"
+                    className="block mb-2 text-sm font-medium"
                 >
                     {label}
                 </label>
@@ -36,12 +61,15 @@ export default function input({
                     type={type}
                     id={id}
                     value={value}
-                    className={`bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 ${
+                    className={`bg-neutral-700 border border-neutral-700 text-white text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 ${
                         icon && 'pl-10'
                     }`}
                     placeholder={placeholder}
-                    onChange={onChange}
+                    onChange={handleChange}
                 />
+            </div>
+            <div className="flex justify-end">
+                <p className="text-xs text-amber-500 mt-2 min-h-4">{error}</p>
             </div>
         </div>
     )

@@ -1,0 +1,18 @@
+---
+import MainLayout from './MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<MainLayout title={title} description={description}>
+	<Navbar />
+	<div class="mx-auto min-h-screen max-w-screen">
+		<slot />
+	</div>
+</MainLayout>
