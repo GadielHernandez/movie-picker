@@ -8,6 +8,7 @@ interface ModalProps {
     children: React.ReactNode
     onCancel?: () => void
     onSave?: () => void
+    footer?: boolean
 }
 
 const Modal = ({
@@ -17,6 +18,7 @@ const Modal = ({
     children,
     onCancel,
     onSave,
+    footer = true,
 }: ModalProps) => {
     if (!isOpen) return null
 
@@ -25,7 +27,9 @@ const Modal = ({
             tabIndex={-1}
             className="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center bg-neutral-950/60 w-screen h-screen"
         >
-            <div className="m-auto bg-neutral-900 rounded-lg shadow min-h-72 w-10/12 md:w-1/2">
+            <div
+                className={`m-auto bg-neutral-900 rounded-lg shadow min-h-72 w-10/12 md:w-1/2 max-w-2xl`}
+            >
                 <header className="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-neutral-950">
                     <h3 className="text-lg font-semibold text-white">
                         {title}
@@ -55,7 +59,11 @@ const Modal = ({
                 <main className="p-4 text-left max-h-[70vh] overflow-scroll">
                     {children}
                 </main>
-                <footer className="flex items-center justify-end p-4 md:p-5 border-t border-slate-950 rounded-b gap-4">
+                <footer
+                    className={`${
+                        !footer && 'hidden'
+                    } flex items-center justify-end p-4 md:p-5 border-t border-slate-950 rounded-b gap-4`}
+                >
                     <Button outline onClick={onCancel}>
                         Cancelar
                     </Button>

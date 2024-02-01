@@ -114,10 +114,12 @@ export default function ProfileInfo({ initialProfile }: ProfileInfoProps) {
                 )}
             </ul>
 
-            <EditProfile
-                initialProfile={profile}
-                onNewProfileData={handleNewProfileData}
-            />
+            <div className="flex">
+                <EditProfile
+                    initialProfile={profile}
+                    onNewProfileData={handleNewProfileData}
+                />
+            </div>
         </div>
     )
 }

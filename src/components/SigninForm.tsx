@@ -2,7 +2,7 @@ import { useState, type MouseEvent, useEffect } from 'react'
 import Input from './core/Input'
 import Button from './core/Button'
 
-export default function RegisterForm() {
+export default function SigninForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState<string | null>(null)
@@ -17,10 +17,12 @@ export default function RegisterForm() {
         try {
             setLoading(true)
             const response: any = await signInUser(encode)
-            if (response.error) setError('Correo o contraseña incorrectos')
-            else {
-                setError(null)
+            if (response.error) {
+                setError('Correo o contraseña incorrectos')
+                return
             }
+            setError(null)
+            window.location.href = '/'
         } catch (err) {
             setError('¡Ups! Algo salió mal. Intenta de nuevo.')
         } finally {
@@ -72,12 +74,12 @@ export default function RegisterForm() {
                     setPassword(e.target.value)
                 }}
             />
-            <div className="flex justify-between">
+            <div className="flex flex-col gap-6">
                 <div>
                     <p
                         className={`${
                             !error && 'hidden'
-                        } bg-red-700/45 text-red-200 px-12 py-3 rounded-lg`}
+                        } bg-red-700/5 text-red-200 px-3 py-3 rounded-lg`}
                     >
                         {error}
                     </p>

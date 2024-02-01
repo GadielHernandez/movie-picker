@@ -26,6 +26,7 @@ export default function RegisterForm() {
                 return
             }
             setError(null)
+            window.location.href = '/'
         } catch (err) {
             setError('¡Ups! Algo salió mal. Intenta de nuevo.')
         } finally {
@@ -127,12 +128,12 @@ export default function RegisterForm() {
                     setPassword2(e.target.value)
                 }}
             />
-            <div className="flex justify-between">
+            <div className="flex flex-col gap-6">
                 <div>
                     <p
                         className={`${
                             !error && 'hidden'
-                        } bg-red-700/45 text-red-200 px-12 py-3 rounded-lg`}
+                        } bg-red-700/45 text-red-200 px-3 py-3 rounded-lg`}
                     >
                         {error}
                     </p>

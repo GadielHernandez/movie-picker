@@ -1,15 +1,16 @@
 ---
-import Layout from '../layouts/HeaderLayout.astro';
+import HeaderLayout from '../layouts/HeaderLayout.astro';
 import Header from '../components/Header.astro';
 import Grid from '../components/Grid.astro';
 import Category from '../components/Category.tsx';
+
+import { supabase } from "../lib/supabase";
+import { type IProfile } from "../components/ProfileInfo";
+
 import { type GetApiCategories } from '../models/categories/category.interfaces.ts';
-
 import { GET } from './api/categories.json';
-
 import { getMovies } from './api/movies.json';
 import type { MoviesJson } from '../models/movie/movie.intefaces';
-
 import { getPersons } from './api/persons.json';
 import { type PersonsJson } from '../models/persons/person.interfaces';
 
@@ -29,11 +30,46 @@ categories.data.forEach( category => {
 	})
 });
 
+const { cookies } = Astro;
+
+let profile: IProfile | undefined;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (accessToken && refreshToken) { 
+	const { data, error } = await supabase.auth.setSession({
+	refresh_token: refreshToken.value,
+	access_token: accessToken.value,
+	});
+
+	if (error) {
+		cookies.delete("sb-access-token", {
+			path: "/",
+		});
+		cookies.delete("sb-refresh-token", {
+			path: "/",
+		});
+	return;
+	}
+
+	const metadata = data.user?.user_metadata
+
+	profile = {
+		name: metadata?.username,
+		image: '',
+		description: metadata?.description,
+	};
+}
 ---
 
-<Layout title="Movie Tipsters" description="Pagina para hacer quiniela o predicciones de los ganadores de los Oscars 2024">
+<HeaderLayout 
+	title="Movie Tipsters" 
+	description="Pagina para hacer quiniela o predicciones de los ganadores de los Oscars 2024" 
+	profile={profile}
+>
 	<main>
-		<Header/>
+		<Header profile={profile}/>
 		<Grid>
 			{categories.data.map((category) => (
 				<Category 
@@ -44,4 +80,4 @@ categories.data.forEach( category => {
 			))}
 		</Grid>
 	</main>
-</Layout>
+</HeaderLayout>

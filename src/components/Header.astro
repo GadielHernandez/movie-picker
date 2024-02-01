@@ -1,12 +1,16 @@
 ---
-import ProfileInfo from "./ProfileInfo.tsx";
-const Profile = null
+import ProfileInfo, { type IProfile } from './ProfileInfo'
+interface Props {
+    profile?: IProfile
+}
+
+const { profile }: Props = Astro.props
 ---
 
 <header class="flex flex-col md:flex-row my-32 gap-4">
     <div class="w-2/3 order-2 md:order-1">
-        { Profile 
-            ? <ProfileInfo client:load initialProfile={Profile}/>
+        { profile 
+            ? <ProfileInfo client:load initialProfile={profile}/>
             : 
             <h1 class="text-5xl font-light max-w-96 my-auto">
                 Predicciones de los Oscars
