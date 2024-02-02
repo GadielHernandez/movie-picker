@@ -9,7 +9,7 @@ interface Props {
 
 const { profile }: Props = Astro.props
 ---
-<nav class="flex h-16 py-3 justify-between items-center">
+<nav class="fixed flex h-16 py-3 justify-between items-center px-6 md:px-12 lg:px-44 top-0 left-0 w-full z-50">
     <div>
         <img src="/img/full_icon.png" alt="Logo Movie Picker" class="h-8"/>
     </div>
@@ -26,3 +26,17 @@ const { profile }: Props = Astro.props
         }
     </div>
 </nav>
+
+<script>
+    const scrollHander = () => {
+        const nav = document.querySelector('nav')
+        if (window.scrollY > 100) {
+            nav?.classList.add('bg-neutral-900')
+            nav?.classList.add('shadow-xl')
+        } else {
+            nav?.classList.remove('bg-neutral-900')
+            nav?.classList.remove('shadow-xl')
+        }
+    }
+    window.addEventListener('scroll', scrollHander)
+</script>

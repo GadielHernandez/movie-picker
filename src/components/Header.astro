@@ -7,7 +7,7 @@ interface Props {
 const { profile }: Props = Astro.props
 ---
 
-<header class="flex flex-col md:flex-row my-32 gap-4">
+<header class="flex flex-col md:flex-row py-32 gap-4">
     <div class="w-2/3 order-2 md:order-1">
         { profile 
             ? <ProfileInfo client:load initialProfile={profile}/>
