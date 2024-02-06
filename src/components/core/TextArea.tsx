@@ -19,7 +19,7 @@ export default function input({
             {label && (
                 <label
                     htmlFor="description"
-                    className="block mb-2 text-sm font-medium text-slate-900"
+                    className="block mb-2 text-sm font-medium"
                 >
                     {label}
                 </label>
@@ -27,7 +27,7 @@ export default function input({
             <textarea
                 id={id}
                 value={value}
-                className="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                className="bg-neutral-700 border border-neutral-700 text-white text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"
                 placeholder={placeholder}
                 required
                 maxLength={maxLength}

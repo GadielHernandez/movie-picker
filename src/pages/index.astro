@@ -4,24 +4,16 @@ import Header from '../components/Header.astro';
 import Grid from '../components/Grid.astro';
 import Category from '../components/Category.tsx';
 
-import { supabase } from "../lib/supabase";
-import { type IProfile } from "../components/ProfileInfo";
+import { fetchCategories } from '../models/categories/category.services';
+import { fetchMovies } from '../models/movie/movie.services';
+import { fetchPersons } from '../models/person/person.services';
 
-import { type GetApiCategories } from '../models/categories/category.interfaces.ts';
-import { GET } from './api/categories.json';
-import { getMovies } from './api/movies.json';
-import type { MoviesJson } from '../models/movie/movie.intefaces';
-import { getPersons } from './api/persons.json';
-import { type PersonsJson } from '../models/persons/person.interfaces';
+import { setUserSession, getProfile } from '../lib/auth';
 
-let requestCategories = await GET(Astro)
-const categories: GetApiCategories = await requestCategories.json()
 
-const requestMovies = await getMovies(Astro)
-const movies: MoviesJson = await requestMovies.json()
-
-const requestPersons = await getPersons(Astro)
-const persons: PersonsJson = await requestPersons.json()
+const categories = await fetchCategories(Astro);
+const movies = await fetchMovies(Astro);
+const persons = await fetchPersons(Astro);
 
 categories.data.forEach( category => {
 	category.nominates.forEach( nominate => {
@@ -30,46 +22,23 @@ categories.data.forEach( category => {
 	})
 });
 
-const { cookies } = Astro;
+const userSession = await setUserSession(Astro.cookies);
+const idProfile = Astro.url.searchParams.get('user')
+let currentProfile = userSession || null;
 
-let profile: IProfile | undefined;
-
-const accessToken = cookies.get("sb-access-token");
-const refreshToken = cookies.get("sb-refresh-token");
-
-if (accessToken && refreshToken) { 
-	const { data, error } = await supabase.auth.setSession({
-	refresh_token: refreshToken.value,
-	access_token: accessToken.value,
-	});
-
-	if (error) {
-		cookies.delete("sb-access-token", {
-			path: "/",
-		});
-		cookies.delete("sb-refresh-token", {
-			path: "/",
-		});
-	return;
-	}
-
-	const metadata = data.user?.user_metadata
-
-	profile = {
-		name: metadata?.username,
-		image: '',
-		description: metadata?.description,
-	};
+if (idProfile && currentProfile?.id !== idProfile) {
+	const profileFinded = await getProfile(idProfile);
+	if (profileFinded) currentProfile = profileFinded;
 }
 ---
 
 <HeaderLayout 
 	title="Movie Tipsters" 
 	description="Pagina para hacer quiniela o predicciones de los ganadores de los Oscars 2024" 
-	profile={profile}
+	profile={currentProfile}
 >
 	<main>
-		<Header profile={profile}/>
+		<Header profile={currentProfile}/>
 		<Grid>
 			{categories.data.map((category) => (
 				<Category 

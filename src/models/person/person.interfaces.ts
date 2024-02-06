@@ -9,6 +9,6 @@ export interface IPerson {
     profile_path: string
 }
 
-export type PersonsJson = {
+export type GetApiResponse = {
     data: IPerson[]
 }

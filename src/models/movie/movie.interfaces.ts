@@ -16,6 +16,6 @@ export interface IMovie {
     relevant: boolean
 }
 
-export type MoviesJson = {
+export type GetApiResponse = {
     data: IMovie[]
 }

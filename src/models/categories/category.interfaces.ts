@@ -1,5 +1,5 @@
-import type { IMovie } from '../movie/movie.intefaces'
-import type { IPerson } from '../persons/person.interfaces'
+import type { IMovie } from '../movie/movie.interfaces'
+import type { IPerson } from '../person/person.interfaces'
 
 export interface ICategory {
     id: string
@@ -9,7 +9,7 @@ export interface ICategory {
     nominates: INominated[]
 }
 
-export type GetApiCategories = {
+export type GetApiResponse = {
     data: ICategory[]
 }
 

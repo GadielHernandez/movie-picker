@@ -1,18 +1,9 @@
 import { useState } from 'react'
 import EditProfile from './EditProfile.tsx'
+import { type IProfile } from '../models/profile/profile.interfaces.ts'
 
 interface ProfileInfoProps {
     initialProfile: IProfile
-}
-
-export interface IProfile {
-    name: string
-    image: string
-    description: string
-    instagram?: string
-    tiktok?: string
-    twitter?: string
-    letterbox?: string
 }
 
 export default function ProfileInfo({ initialProfile }: ProfileInfoProps) {
