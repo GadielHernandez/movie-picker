@@ -1,24 +1,8 @@
 import type { AstroCookies } from 'astro'
 import type { IProfile } from '../models/profile/profile.interfaces'
-import supabase, { supabaseAdmin } from './supabase'
+import supabase from './supabase'
 
-export const getProfile = async (id: string | null) => {
-    if (!id) return null
-    console.log('id', id)
-    const { data, error } = await supabaseAdmin().getUserById(id)
-    console.log('data', data, error)
-    if (!data.user) return null
-
-    const metadata = data.user?.user_metadata
-    const profile: IProfile = {
-        id: data.user.id,
-        name: metadata?.username,
-        image: '',
-        description: metadata?.description,
-    }
-
-    return profile
-}
+const auth = () => supabase.auth
 
 export const setUserSession = async (cookies: AstroCookies) => {
     const accessToken = cookies.get('sb-access-token')
@@ -45,10 +29,16 @@ export const setUserSession = async (cookies: AstroCookies) => {
 
     const profile: IProfile = {
         id: data.user.id,
-        name: metadata?.username,
+        name: metadata?.name,
         image: '',
         description: metadata?.description,
+        instagram: metadata?.instagram,
+        twitter: metadata?.twitter,
+        tiktok: metadata?.tiktok,
+        letterbox: metadata?.letterbox,
     }
 
     return profile
 }
+
+export default auth

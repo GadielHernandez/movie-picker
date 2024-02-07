@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import EditProfile from './EditProfile.tsx'
-import { type IProfile } from '../models/profile/profile.interfaces.ts'
+import {
+    type IProfile,
+    type UpdateProfileData,
+} from '../models/profile/profile.interfaces.ts'
 
 interface ProfileInfoProps {
     initialProfile: IProfile
@@ -9,9 +12,10 @@ interface ProfileInfoProps {
 export default function ProfileInfo({ initialProfile }: ProfileInfoProps) {
     const [profile, setProfile] = useState(initialProfile)
 
-    const handleNewProfileData = (newData: Omit<IProfile, 'image'>) => {
+    const handleNewProfileData = (newData: UpdateProfileData) => {
         const newProfile = {
             ...newData,
+            id: profile.id,
             image: profile.image,
         }
         setProfile(newProfile)

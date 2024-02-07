@@ -33,7 +33,7 @@ export default function input({
                 maxLength={maxLength}
                 onChange={onChange}
             />
-            <div className="flex items-center justify-end text-xs text-slate-700 mt-2">
+            <div className="flex items-center justify-end text-xs text-white/35 mt-2">
                 <span>{maxLength} caracteres max.</span>
             </div>
         </div>

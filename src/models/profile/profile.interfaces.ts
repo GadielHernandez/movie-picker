@@ -8,3 +8,5 @@ export interface IProfile {
     twitter?: string
     letterbox?: string
 }
+
+export type UpdateProfileData = Omit<IProfile, 'id' | 'image'>

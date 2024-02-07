@@ -8,7 +8,8 @@ import { fetchCategories } from '../models/categories/category.services';
 import { fetchMovies } from '../models/movie/movie.services';
 import { fetchPersons } from '../models/person/person.services';
 
-import { setUserSession, getProfile } from '../lib/auth';
+import { setUserSession } from '../lib/auth';
+import { getProfile } from '../models/profile/profile.services';
 
 
 const categories = await fetchCategories(Astro);

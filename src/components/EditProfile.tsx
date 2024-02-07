@@ -1,13 +1,16 @@
-import React, { useState, type Dispatch, type SetStateAction } from 'react'
+import { useState } from 'react'
 import Button from './core/Button'
 import Modal from './core/Modal'
 import Input from './core/Input'
 import TextArea from './core/TextArea'
-import type { IProfile } from './ProfileInfo'
+import type {
+    IProfile,
+    UpdateProfileData,
+} from '../models/profile/profile.interfaces'
 
 interface EditProfileProps {
     initialProfile: IProfile
-    onNewProfileData: (profile: Omit<IProfile, 'image'>) => void
+    onNewProfileData: (profile: UpdateProfileData) => void
 }
 
 export default function EditProfile({
@@ -24,25 +27,8 @@ export default function EditProfile({
 
     const DESCRIPTION_MAX_LENGTH = 100
 
-    const handleChange = (
-        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const setters: Record<any, Dispatch<SetStateAction<any>>> = {
-            name: setName,
-            description: setDescription,
-            instagram: setInstagram,
-            tiktok: setTiktok,
-            twitter: setTwitter,
-            letterbox: setLetterbox,
-        }
-
-        const { id, value } = event.target
-        const setter: Dispatch<SetStateAction<string>> = setters[id]
-        setter(value)
-    }
-
-    const handleSave = () => {
-        const newProfile = {
+    const handleSave = async () => {
+        const newProfile: UpdateProfileData = {
             name,
             description,
             instagram,
@@ -51,8 +37,10 @@ export default function EditProfile({
             letterbox,
         }
 
-        onNewProfileData(newProfile)
+        const result = await sendUpdateUser(newProfile)
+        console.log(result)
 
+        onNewProfileData(newProfile)
         setModalOpen(false)
     }
 
@@ -66,6 +54,20 @@ export default function EditProfile({
         setLetterbox(initialProfile.letterbox || '')
         setModalOpen(false)
     }
+
+    const sendUpdateUser = (data: UpdateProfileData) =>
+        new Promise((resolve, reject) => {
+            fetch(`/api/profile`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => response.json())
+                .then((response) => resolve(response))
+                .catch((err) => reject(err))
+        })
 
     return (
         <>
@@ -82,7 +84,7 @@ export default function EditProfile({
                     placeholder="Nombre"
                     type="text"
                     id="name"
-                    onChange={handleChange}
+                    onChange={(e) => setName(e.target.value)}
                     value={name}
                 />
                 <TextArea
@@ -90,7 +92,7 @@ export default function EditProfile({
                     placeholder="Descripción"
                     maxLength={DESCRIPTION_MAX_LENGTH}
                     id="description"
-                    onChange={handleChange}
+                    onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
                 <div className="mb-5">
@@ -100,7 +102,7 @@ export default function EditProfile({
                         type="text"
                         id="instagram"
                         icon="instagram.svg"
-                        onChange={handleChange}
+                        onChange={(e) => setInstagram(e.target.value)}
                         value={instagram}
                     />
                     <Input
@@ -108,7 +110,7 @@ export default function EditProfile({
                         type="text"
                         id="tiktok"
                         icon="tiktok.svg"
-                        onChange={handleChange}
+                        onChange={(e) => setTiktok(e.target.value)}
                         value={tiktok}
                     />
                     <Input
@@ -116,7 +118,7 @@ export default function EditProfile({
                         type="text"
                         id="twitter"
                         icon="x.svg"
-                        onChange={handleChange}
+                        onChange={(e) => setTwitter(e.target.value)}
                         value={twitter}
                     />
                     <Input
@@ -124,7 +126,7 @@ export default function EditProfile({
                         type="text"
                         id="letterbox"
                         icon="letterbox.svg"
-                        onChange={handleChange}
+                        onChange={(e) => setLetterbox(e.target.value)}
                         value={letterbox}
                     />
                 </div>
