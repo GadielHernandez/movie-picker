@@ -5,22 +5,46 @@ import {
     type INominated,
 } from '../models/categories/category.interfaces'
 import CategoryOptions from './CategoryOptions'
+import {
+    setUserSelection,
+    getGuestSelection,
+} from '../lib/client/movieSelection'
 
 interface CategoryProps {
+    user?: string
     category: ICategory
-    initialSelection?: INominated
+    userSelection?: INominated
     width: number
+    enable: boolean
 }
 export default function Category({
+    user,
     category,
-    initialSelection,
+    userSelection,
     width,
+    enable = true,
 }: CategoryProps) {
-    const [selection, setSelection] = useState(initialSelection)
+    const [selection, setSelection] = useState(userSelection)
     const [image, setImage] = useState('')
     const [open, setOpen] = useState(false)
 
-    const handleNewSelection = (newSelection: INominated) => {
+    useEffect(() => {
+        if (!user) {
+            const guestSelection = getGuestSelection(category.id)
+            if (guestSelection) setSelection(guestSelection)
+            return
+        }
+    }, [])
+
+    const handleNewSelection = async (newSelection: INominated) => {
+        await setUserSelection(
+            newSelection.id,
+            category.id,
+            newSelection.movieid,
+            newSelection.personId,
+            user
+        )
+
         setSelection(newSelection)
     }
 
@@ -42,8 +66,10 @@ export default function Category({
         <>
             <article
                 key={category.id}
-                className={`rounded-lg border border-amber-500 shadow-lg shadow-neutral-950 overflow-hidden row-span-1 col-span-${width} p-2 h-full group cursor-pointer`}
-                onClick={() => setOpen(true)}
+                className={`rounded-lg border border-amber-500 shadow-lg shadow-neutral-950 overflow-hidden row-span-1 col-span-${width} p-2 h-full group ${
+                    enable && 'cursor-pointer'
+                }`}
+                onClick={() => enable && setOpen(true)}
                 style={{
                     background:
                         'repeating-conic-gradient(from 30deg,#0000 0 120deg,#332102 0 180deg) 200px 115.39999999999999px, repeating-conic-gradient(from 30deg,#f59e0c 0 60deg,#956006 0 120deg,#332102 0 180deg)',
@@ -71,8 +97,8 @@ export default function Category({
                         </h1>
                     </div>
                     <div
-                        className={`absolute ${
-                            selection && 'hidden'
+                        className={`absolute ${selection && 'hidden'} ${
+                            !enable && 'hidden'
                         } transition-all opacity-50 group-hover:opacity-100 duration-500 top-1/3 left-1/2 transform -translate-x-1/2`}
                     >
                         <svg

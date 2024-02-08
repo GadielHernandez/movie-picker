@@ -1,13 +1,13 @@
 ---
 import ModalAuthButton from "./ModalAuthButton"
 import Button from "./core/Button"
-import type { IProfile } from "./ProfileInfo"
+import type { IProfile } from "../models/profile/profile.interfaces"
 
 interface Props {
-    profile?: IProfile
+    user: IProfile | null
 }
 
-const { profile }: Props = Astro.props
+const { user }: Props = Astro.props
 ---
 <nav class="fixed flex h-16 py-3 justify-between items-center px-6 md:px-12 lg:px-44 top-0 left-0 w-full z-50">
     <div>
@@ -15,7 +15,7 @@ const { profile }: Props = Astro.props
     </div>
     <div class="flex gap-3">
         { 
-            profile 
+            user 
             ? <Button
                 outline
                 href="/api/auth/signout"

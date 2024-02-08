@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro'
 import supabase from '../../../lib/supabase'
+import { setUserSelections } from '../../../models/profile/profile.services'
 
 export const POST: APIRoute = async ({ request, cookies }) => {
-    const { url } = request
-    const searchParams = new URL(url).searchParams
-    const name = searchParams.get('name')
-    const credentialsEncode = searchParams.get('credentials')
+    const body = await request.json()
+    const { name, selections } = body
+    const credentialsEncode = body.credentials
     const credentials = credentialsEncode && atob(credentialsEncode)
 
     if (!credentials) {
@@ -23,24 +23,24 @@ export const POST: APIRoute = async ({ request, cookies }) => {
         )
     }
 
-    const register = await supabase.auth.signUp({
+    const { error, data } = await supabase.auth.signUp({
         email,
         password,
         options: {
             data: {
-                username: name,
+                name,
                 description: 'Mis predicciones para los premios Oscar 2024',
             },
         },
     })
 
-    if (register.error) {
-        return new Response(JSON.stringify({ error: register.error }), {
+    if (error) {
+        return new Response(JSON.stringify({ error }), {
             status: 500,
         })
     }
 
-    let session = register.data?.session
+    let session = data?.session
     if (!session) {
         const { data, error } = await supabase.auth.signInWithPassword({
             email,
@@ -63,7 +63,20 @@ export const POST: APIRoute = async ({ request, cookies }) => {
         path: '/',
     })
 
-    return new Response(JSON.stringify({ user: register.data.user }), {
+    if (!selections || selections.length === 0)
+        return new Response(JSON.stringify({ user: data.user }), {
+            status: 200,
+        })
+
+    const selectionsWithUserId = selections.map((selection: any) => {
+        return {
+            ...selection,
+            userId: data?.user?.id,
+        }
+    })
+    await setUserSelections(selectionsWithUserId)
+
+    return new Response(JSON.stringify({ user: data.user }), {
         status: 200,
     })
 }

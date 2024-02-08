@@ -7,9 +7,13 @@ import {
 
 interface ProfileInfoProps {
     initialProfile: IProfile
+    currentUserId?: string
 }
 
-export default function ProfileInfo({ initialProfile }: ProfileInfoProps) {
+export default function ProfileInfo({
+    initialProfile,
+    currentUserId,
+}: ProfileInfoProps) {
     const [profile, setProfile] = useState(initialProfile)
 
     const handleNewProfileData = (newData: UpdateProfileData) => {
@@ -109,12 +113,14 @@ export default function ProfileInfo({ initialProfile }: ProfileInfoProps) {
                 )}
             </ul>
 
-            <div className="flex">
-                <EditProfile
-                    initialProfile={profile}
-                    onNewProfileData={handleNewProfileData}
-                />
-            </div>
+            {profile.id === currentUserId && (
+                <div className="flex">
+                    <EditProfile
+                        initialProfile={profile}
+                        onNewProfileData={handleNewProfileData}
+                    />
+                </div>
+            )}
         </div>
     )
 }

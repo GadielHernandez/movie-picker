@@ -26,7 +26,6 @@ export const setUserSession = async (cookies: AstroCookies) => {
     }
 
     const metadata = data.user?.user_metadata
-
     const profile: IProfile = {
         id: data.user.id,
         name: metadata?.name,

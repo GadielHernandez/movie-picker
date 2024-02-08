@@ -1,6 +1,7 @@
 import { useState, type MouseEvent, useEffect } from 'react'
 import Input from './core/Input'
 import Button from './core/Button'
+import { cleanGuestSelections } from '../lib/client/movieSelection'
 
 export default function SigninForm() {
     const [email, setEmail] = useState('')
@@ -22,6 +23,7 @@ export default function SigninForm() {
                 return
             }
             setError(null)
+            cleanGuestSelections()
             window.location.href = '/'
         } catch (err) {
             setError('¡Ups! Algo salió mal. Intenta de nuevo.')

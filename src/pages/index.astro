@@ -4,22 +4,16 @@ import Header from '../components/Header.astro';
 import Grid from '../components/Grid.astro';
 import Category from '../components/Category.tsx';
 
-import { fetchCategories } from '../models/categories/category.services';
-import { fetchMovies } from '../models/movie/movie.services';
-import { fetchPersons } from '../models/person/person.services';
-
+import { fetchCategories, fillNominateData } from '../models/categories/category.services';
 import { setUserSession } from '../lib/auth';
-import { getProfile } from '../models/profile/profile.services';
+import { getProfile, getProfileSelections } from '../models/profile/profile.services';
+import type { IProfileSelections } from '../models/profile/profile.interfaces';
 
 
 const categories = await fetchCategories(Astro);
-const movies = await fetchMovies(Astro);
-const persons = await fetchPersons(Astro);
-
 categories.data.forEach( category => {
 	category.nominates.forEach( nominate => {
-		nominate.movie = movies.data.find( movie => movie.id === nominate.movieid)
-		if(nominate.personId) nominate.person = persons.data.find( person => person.id === nominate.personId)
+		nominate = fillNominateData(nominate);
 	})
 });
 
@@ -31,21 +25,28 @@ if (idProfile && currentProfile?.id !== idProfile) {
 	const profileFinded = await getProfile(idProfile);
 	if (profileFinded) currentProfile = profileFinded;
 }
+
+let selections: IProfileSelections = {}
+if(currentProfile) 
+	selections = await getProfileSelections(currentProfile.id);
 ---
 
 <HeaderLayout 
 	title="Movie Tipsters" 
 	description="Pagina para hacer quiniela o predicciones de los ganadores de los Oscars 2024" 
-	profile={currentProfile}
+	userSession={userSession}
 >
 	<main>
-		<Header profile={currentProfile}/>
+		<Header profile={currentProfile} currentUserId={userSession?.id}/>
 		<Grid>
 			{categories.data.map((category) => (
 				<Category 
 					client:load
+					user={userSession?.id}
 					category={category}
 					width={category.relevant ? 2 : 1}
+					userSelection={selections[category.id]}
+					enable={currentProfile?.id === userSession?.id}
 				/>
 			))}
 		</Grid>

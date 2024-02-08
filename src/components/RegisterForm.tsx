@@ -1,6 +1,10 @@
 import { useState, type MouseEvent, useEffect } from 'react'
 import Input from './core/Input'
 import Button from './core/Button'
+import {
+    getGuestSelections,
+    cleanGuestSelections,
+} from '../lib/client/movieSelection'
 
 export default function RegisterForm() {
     const [name, setName] = useState('')
@@ -18,7 +22,8 @@ export default function RegisterForm() {
 
         try {
             setLoading(true)
-            const response: any = await registerUser(name, encode)
+            const selections = getGuestSelections()
+            const response: any = await registerUser(name, encode, selections)
             if (response.error) {
                 if (response.error.message === 'User already registered')
                     setError('Este correo ya esta registrado')
@@ -26,6 +31,7 @@ export default function RegisterForm() {
                 return
             }
             setError(null)
+            cleanGuestSelections()
             window.location.href = '/'
         } catch (err) {
             setError('¡Ups! Algo salió mal. Intenta de nuevo.')
@@ -56,14 +62,23 @@ export default function RegisterForm() {
         setEnableButton(valid)
     }, [email, password, password2])
 
-    const registerUser = (name: string, credentials: string) =>
+    const registerUser = (
+        name: string,
+        credentials: string,
+        selections: any[]
+    ) =>
         new Promise((resolve, reject) => {
-            fetch(
-                `/api/auth/register?name=${name}&credentials=${credentials}`,
-                {
-                    method: 'POST',
-                }
-            )
+            fetch(`/api/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    credentials,
+                    selections,
+                }),
+            })
                 .then((response) => response.json())
                 .then((response) => resolve(response))
                 .catch((err) => reject(err))

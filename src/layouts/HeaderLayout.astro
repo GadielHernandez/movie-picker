@@ -1,19 +1,19 @@
 ---
 import MainLayout from './MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
-import type { IProfile } from '../components/ProfileInfo';
+import type { IProfile } from '../models/profile/profile.interfaces';
 
 interface Props {
 	title: string;
 	description: string;
-	profile?: IProfile
+	userSession: IProfile | null;
 }
 
-const { title, description, profile } = Astro.props;
+const { title, description, userSession } = Astro.props;
 ---
 
 <MainLayout title={title} description={description}>
-	<Navbar profile={profile}/>
+	<Navbar user={userSession}/>
 	<div class="mx-auto min-h-screen max-w-screen mt-16">
 		<slot />
 	</div>

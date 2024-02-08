@@ -1,16 +1,19 @@
 ---
-import ProfileInfo, { type IProfile } from './ProfileInfo'
+import ProfileInfo from './ProfileInfo'
+import { type IProfile } from '../models/profile/profile.interfaces'
+
 interface Props {
-    profile?: IProfile
+    profile: IProfile | null
+    currentUserId?: string
 }
 
-const { profile }: Props = Astro.props
+const { profile, currentUserId }: Props = Astro.props
 ---
 
 <header class="flex flex-col md:flex-row py-32 gap-4">
     <div class="w-2/3 order-2 md:order-1">
         { profile 
-            ? <ProfileInfo client:load initialProfile={profile}/>
+            ? <ProfileInfo client:load initialProfile={profile} currentUserId={currentUserId}/>
             : 
             <h1 class="text-5xl font-light max-w-96 my-auto">
                 Predicciones de los Oscars
