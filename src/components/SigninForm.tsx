@@ -3,7 +3,11 @@ import Input from './core/Input'
 import Button from './core/Button'
 import { cleanGuestSelections } from '../lib/client/movieSelection'
 
-export default function SigninForm() {
+interface RegisterFormProps {
+    redirect?: string
+}
+
+export default function SigninForm({ redirect }: RegisterFormProps) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState<string | null>(null)
@@ -24,7 +28,8 @@ export default function SigninForm() {
             }
             setError(null)
             cleanGuestSelections()
-            window.location.href = '/'
+            if (redirect) window.location.href = redirect
+            else window.location.href = '/'
         } catch (err) {
             setError('¡Ups! Algo salió mal. Intenta de nuevo.')
         } finally {

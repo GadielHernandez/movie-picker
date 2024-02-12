@@ -1,6 +1,6 @@
 import type {
     IProfile,
-    IDBProfileSelection,
+    IProfileSelectionDocument,
     IProfileSelections,
     UpdateProfileData,
 } from './profile.interfaces'
@@ -43,7 +43,7 @@ export async function getProfileSelections(id: string) {
 
     if (query.error) return {}
 
-    const data: IDBProfileSelection[] = query.data || []
+    const data: IProfileSelectionDocument[] = query.data || []
     const selections: IProfileSelections = {}
     data.forEach((selection) => {
         const nominate = fillNominateData({

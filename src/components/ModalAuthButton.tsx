@@ -9,13 +9,23 @@ enum modes {
     REGISTER = 'REGISTER',
 }
 
-export default function ModalAuthButton() {
+interface ModalAuthButtonProps {
+    children?: React.ReactNode
+    redirect?: string
+}
+
+export default function ModalAuthButton({
+    children,
+    redirect,
+}: ModalAuthButtonProps) {
     const [isModalOpen, setModalOpen] = useState(false)
     const [mode, setMode] = useState<modes>(modes.SIGNIN)
 
     return (
         <>
-            <Button onClick={() => setModalOpen(true)}>Inicia sesión</Button>
+            <span onClick={() => setModalOpen(true)}>
+                {children || <Button>Inicia sesión</Button>}
+            </span>
             <Modal
                 title={mode === modes.SIGNIN ? 'Inicia sesión' : 'Regístrate'}
                 isOpen={isModalOpen}
@@ -29,7 +39,7 @@ export default function ModalAuthButton() {
                             alt="Logo Movie Picker"
                             className="my-8 h-14 md:h-20"
                         />
-                        <SigninForm />
+                        <SigninForm redirect={redirect} />
                         <p className="text-sm text-neutral-400 mt-6 text-center">
                             ¿No tienes una cuenta? &nbsp;
                             <a
@@ -49,7 +59,7 @@ export default function ModalAuthButton() {
                             alt="Logo Movie Picker"
                             className="my-8 h-14 md:h-20"
                         />
-                        <RegisterForm />
+                        <RegisterForm redirect={redirect} />
                         <p className="text-sm text-neutral-400 mt-6 text-center">
                             ¿Ya tienes una cuenta? &nbsp;
                             <a

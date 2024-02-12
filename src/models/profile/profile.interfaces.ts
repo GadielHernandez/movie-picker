@@ -13,7 +13,7 @@ export interface IProfile {
 
 export type UpdateProfileData = Omit<IProfile, 'id' | 'image'>
 
-export interface IDBProfileSelection {
+export interface IProfileSelectionDocument {
     user_id: string
     category_id: string
     movie_id: string

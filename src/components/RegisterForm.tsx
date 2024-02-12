@@ -6,7 +6,11 @@ import {
     cleanGuestSelections,
 } from '../lib/client/movieSelection'
 
-export default function RegisterForm() {
+interface RegisterFormProps {
+    redirect?: string
+}
+
+export default function RegisterForm({ redirect }: RegisterFormProps) {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -32,7 +36,9 @@ export default function RegisterForm() {
             }
             setError(null)
             cleanGuestSelections()
-            window.location.href = '/'
+
+            if (redirect) window.location.href = redirect
+            else window.location.href = '/'
         } catch (err) {
             setError('¡Ups! Algo salió mal. Intenta de nuevo.')
         } finally {

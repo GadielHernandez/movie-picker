@@ -3,7 +3,7 @@ import movies from '../../data/movies.json'
 import persons from '../../data/persons.json'
 import type { INominated } from '../../models/categories/category.interfaces'
 import type { IMovie } from '../../models/movie/movie.interfaces'
-import type { IDBProfileSelection } from '../../models/profile/profile.interfaces'
+import type { IProfileSelectionDocument } from '../../models/profile/profile.interfaces'
 
 export const setUserSelection = async (
     nominatedId: number,
@@ -66,7 +66,7 @@ export const getGuestSelections = () => {
         const selection = localStorage.getItem(`selection-${category.id}`)
         if (!selection) return null
 
-        const dbParsed: IDBProfileSelection = JSON.parse(selection)
+        const dbParsed: IProfileSelectionDocument = JSON.parse(selection)
         return dbParsed
     })
 
