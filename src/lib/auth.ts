@@ -1,5 +1,6 @@
 import type { AstroCookies } from 'astro'
 import type { IProfile } from '../models/profile/profile.interfaces'
+import { getProfile } from '../models/profile/profile.services'
 import supabase from './supabase'
 
 const auth = () => supabase.auth
@@ -25,17 +26,7 @@ export const setUserSession = async (cookies: AstroCookies) => {
         return null
     }
 
-    const metadata = data.user?.user_metadata
-    const profile: IProfile = {
-        id: data.user.id,
-        name: metadata?.name,
-        image: '',
-        description: metadata?.description,
-        instagram: metadata?.instagram,
-        twitter: metadata?.twitter,
-        tiktok: metadata?.tiktok,
-        letterbox: metadata?.letterbox,
-    }
+    const profile = await getProfile(data.user.id)
 
     return profile
 }

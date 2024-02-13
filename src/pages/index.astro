@@ -9,7 +9,6 @@ import { setUserSession } from '../lib/auth';
 import { getProfile, getProfileSelections } from '../models/profile/profile.services';
 import type { IProfileSelections } from '../models/profile/profile.interfaces';
 
-
 const categories = await fetchCategories(Astro);
 categories.data.forEach( category => {
 	category.nominates.forEach( nominate => {

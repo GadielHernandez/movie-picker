@@ -6,6 +6,7 @@ import JoinGroupButton from '../components/JoinGroupButton';
 import HeaderLayout from '../layouts/HeaderLayout.astro';
 import { setUserSession } from '../lib/auth';
 import { getGroup, getGroupMembers, addUserToGroup } from '../models/group/group.services';
+import type { IProfile } from '../models/profile/profile.interfaces';
 
 const userSession = await setUserSession(Astro.cookies);
 
@@ -17,7 +18,7 @@ if (!groupId) {
 const group = await getGroup(parseInt(groupId))
 if (!group) return Astro.redirect('/groups');
 
-const members = await getGroupMembers(parseInt(groupId))
+const members: IProfile[] = await getGroupMembers(parseInt(groupId))
 let userInGroup = false;
 if (userSession) 
     userInGroup = members.some((m) => m.id === userSession.id)

@@ -2,9 +2,9 @@
 import HeaderLayout from '../layouts/HeaderLayout.astro';
 import { getGroups } from '../models/group/group.services'
 import { setUserSession } from '../lib/auth';
-import Button from '../components/core/Button';
 import Group from '../components/Group.astro';
 import type { IGroup } from '../models/group/group.interfaces';
+import CreateGroupModal from '../components/CreateGroupModal';
 
 const userSession = await setUserSession(Astro.cookies);
 if (!userSession) {
@@ -26,19 +26,17 @@ const groups = await getGroups(userSession.id);
                 Mis Grupos
                 </h1>
                 <p class="font-semibold mt-3 text-neutral-400">
-                    ùnete a un grupo o crea uno nuevo para comparar tus predicciones
+                    Únete a un grupo o crea uno nuevo para comparar tus predicciones y ver quien es el mejor.
                 </p>
             </div>
             <div class="flex mt-6">
-                <Button>
-                    Crear Grupo
-                </Button>
+                <CreateGroupModal client:idle creatorId={userSession.id}/>
             </div>
         </header>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 gap-4">
             {
                 groups.map((group: IGroup)=> (
-                    <Group title={group.name} description={'description '} members={0}/>
+                    <Group id={group.id} title={group.name} description={group.createBy} members={group.members}/>
                 ))
             }
         </div>

@@ -1,75 +1,85 @@
 import supabase from '../../lib/supabase'
 import type { IUserGroupDocument } from './group.interfaces'
-import { supabaseAdmin } from '../../lib/supabase'
 import type { IProfile } from '../profile/profile.interfaces'
+
+export async function createGroup(
+    name: string,
+    description: string,
+    userId: string
+) {
+    return supabase
+        .from('groups')
+        .insert({
+            name,
+            description,
+            created_by: userId,
+        })
+        .select()
+}
 
 export async function getGroups(userId: string) {
     const query: any = await supabase
         .from('groups-users')
-        .select('id, groups(*)')
+        .select(
+            'id, groups(id, name, description, members, created_by(name), created_at)'
+        )
         .eq('user_id', userId)
 
     if (query.error) return []
-
-    const data = query.data.map((group: IUserGroupDocument) => {
+    const groups = query.data.map((data: IUserGroupDocument) => {
         return {
-            id: group.groups.id,
-            name: group.groups.name,
-            description: group.groups.description,
-            members: group.groups.members,
-            createBy: group.groups.created_by,
-            createdAt: group.groups.created_at,
+            id: data.groups.id,
+            name: data.groups.name,
+            description: data.groups.description,
+            members: data.groups.members,
+            createBy: data.groups.created_by.name,
+            createdAt: data.groups.created_at,
         }
     })
-    return data
+
+    return groups
 }
 
 export async function getGroup(id: number) {
-    const { data } = await supabase.from('groups').select()
+    const { data } = await supabase.from('groups').select().eq('id', id)
     if (!data || data.length === 0) return null
     return data[0]
 }
 
 export async function getGroupMembers(groupId: number) {
-    const USERS_BY_PAGE = 1000
-    const { data } = await supabase
+    const { data }: { data: any } = await supabase
         .from('groups-users')
-        .select('user_id')
+        .select('users(*)')
         .eq('group_id', groupId)
 
     if (!data) return []
 
-    const usersData = []
-    while (usersData.length < data.length) {
-        const {
-            data: { users },
-        } = await supabaseAdmin().listUsers({
-            page: 1,
-            perPage: USERS_BY_PAGE,
-        })
-
-        const usersFinded = users.filter((user) =>
-            data.some((d) => d.user_id === user.id)
-        )
-        usersData.push(...usersFinded)
-
-        if (users.length < USERS_BY_PAGE) break
-    }
-
-    return usersData.map((user) => {
+    return data.map(({ users }: { users: IProfile }) => {
         return {
-            id: user.id,
-            name: user.user_metadata.name,
-            email: user.email,
-            image: '',
-            description: user.user_metadata.description,
+            id: users.id,
+            name: users.name,
+            image: users.image,
+            description: users.description,
         } as IProfile
     })
 }
 
 export async function addUserToGroup(userId: string, groupId: number) {
-    return supabase.from('groups-users').insert({
-        user_id: userId,
+    const { data, error } = await supabase
+        .from('groups-users')
+        .insert({
+            user_id: userId,
+            group_id: groupId,
+        })
+        .select()
+
+    if (error) return { error }
+
+    const increment = await supabase.rpc('IncrementGroupMembers', {
         group_id: groupId,
     })
+
+    if (increment.error) return { error: increment.error }
+
+    return { data }
 }

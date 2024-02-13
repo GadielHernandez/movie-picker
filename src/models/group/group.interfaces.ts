@@ -2,7 +2,7 @@ export interface IGroup {
     id: string
     name: string
     description: string
-    members: string[]
+    members: number
     createBy: string
     createdAt: Date
 }
@@ -18,6 +18,6 @@ export interface IGroupDocument {
     name: string
     members: number
     created_at: string
-    created_by: string
+    created_by: string | any
     description: string
 }

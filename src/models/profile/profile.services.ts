@@ -4,32 +4,36 @@ import type {
     IProfileSelections,
     UpdateProfileData,
 } from './profile.interfaces'
-import supabase, { supabaseAdmin } from '../../lib/supabase'
-import auth from '../../lib/auth'
+import supabase from '../../lib/supabase'
 import { fillNominateData } from '../categories/category.services'
 
-export async function updateCurrentProfile(data: UpdateProfileData) {
-    return await auth().updateUser({
-        data: { ...data },
-    })
+export async function updateCurrentProfile(
+    id: string,
+    data: UpdateProfileData
+) {
+    return supabase
+        .from('users')
+        .update({ ...data })
+        .eq('id', id)
+        .select()
 }
 
 export async function getProfile(id: string | null) {
     if (!id) return null
 
-    const { data } = await supabaseAdmin().getUserById(id)
-    if (!data.user) return null
+    const { data } = await supabase.from('users').select().eq('id', id)
+    if (!data || data.length === 0) return null
 
-    const metadata = data.user?.user_metadata
+    const user = data[0]
     const profile: IProfile = {
-        id: data.user.id,
-        name: metadata?.username,
-        image: '',
-        description: metadata?.description,
-        instagram: metadata?.instagram,
-        twitter: metadata?.twitter,
-        tiktok: metadata?.tiktok,
-        letterbox: metadata?.letterboxd,
+        id: user.id,
+        name: user.name,
+        image: user.image,
+        description: user.description,
+        instagram: user.instagram,
+        twitter: user.twitter,
+        tiktok: user.tiktok,
+        letterbox: user.letterboxd,
     }
 
     return profile
@@ -76,7 +80,7 @@ export async function setUserSelections(
             person_id: selection.personId,
         }
     })
-    console.log('batch', batch, selections)
+
     const { data, error } = await supabase
         .from('oscars-selections')
         .upsert(batch)

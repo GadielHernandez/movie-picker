@@ -12,19 +12,17 @@ export default function JoinGroupButton({
 }: JoinGroupButtonProps) {
     const handleClickJoin = async () => {
         await joinGroup()
+        window.location.reload()
     }
 
-    const joinGroup = async () => {
-        await fetch('/api/group', {
+    const joinGroup = () =>
+        fetch('/api/group', {
             method: 'PUT',
             body: JSON.stringify({ userId, groupId }),
             headers: {
                 'Content-Type': 'application/json',
             },
         })
-
-        window.location.reload()
-    }
 
     return userId ? (
         <Button onClick={handleClickJoin}>Unirse</Button>

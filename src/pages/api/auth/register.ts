@@ -26,19 +26,21 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     const { error, data } = await supabase.auth.signUp({
         email,
         password,
-        options: {
-            data: {
-                name,
-                description: 'Mis predicciones para los premios Oscar 2024',
-            },
-        },
     })
 
-    if (error) {
+    if (error || !data?.user) {
         return new Response(JSON.stringify({ error }), {
             status: 500,
         })
     }
+
+    await supabase.from('users').insert([
+        {
+            id: data?.user?.id,
+            name,
+            description: 'Mis predicciones para los premios Oscar 2024',
+        },
+    ])
 
     let session = data?.session
     if (!session) {
