@@ -6,6 +6,7 @@ import {
     type UpdateProfileData,
 } from '../models/profile/profile.interfaces.ts'
 import SocialPill from './SocialPill.tsx'
+import ShareButton from './ShareButton.tsx'
 
 interface ProfileInfoProps {
     initialProfile: IProfile
@@ -48,12 +49,15 @@ export default function ProfileInfo({
                             {profile.name}
                         </h1>
                         {profile.id === currentUserId && (
-                            <div className="flex">
-                                <EditProfile
-                                    initialProfile={profile}
-                                    onNewProfileData={handleNewProfileData}
-                                />
-                            </div>
+                            <>
+                                <div className="flex">
+                                    <EditProfile
+                                        initialProfile={profile}
+                                        onNewProfileData={handleNewProfileData}
+                                    />
+                                </div>
+                                <ShareButton userId={profile.id} />
+                            </>
                         )}
                     </div>
                     <h2 className="text-sm mt-3 tracking-tight font-medium max-w-96 text-white/70">
