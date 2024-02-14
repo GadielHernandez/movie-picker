@@ -21,7 +21,6 @@ export default function Category({
     user,
     category,
     userSelection,
-    width,
     enable = true,
 }: CategoryProps) {
     const [selection, setSelection] = useState(userSelection)
@@ -89,10 +88,10 @@ export default function Category({
                         }}
                     ></div>
                     <div className="absolute bottom-3 left-3 right-3 p-0 md:p-3 tracking-wide rounded-lg z-20">
-                        <h2 className="text-sm md:text-xl text-white w-full font-semibold">
+                        <h2 className="text-xs md:text-lg text-white w-full font-bold">
                             {selection && selection.name}
                         </h2>
-                        <h1 className="text-[12px] md:text-sm text-white uppercase">
+                        <h1 className="text-[10px] md:text-sm text-white/80 uppercase font-semibold mt-1">
                             {category.title}
                         </h1>
                     </div>

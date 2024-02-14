@@ -13,7 +13,7 @@ import type { IProfileSelections } from '../models/profile/profile.interfaces';
 const categories = await fetchCategories(Astro);
 categories.data.forEach( category => {
 	category.nominates.forEach( nominate => {
-		nominate = fillNominateData(nominate);
+		nominate = fillNominateData(nominate, category.id);
 	})
 });
 

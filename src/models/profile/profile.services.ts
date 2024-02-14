@@ -50,11 +50,14 @@ export async function getProfileSelections(id: string) {
     const data: IProfileSelectionDocument[] = query.data || []
     const selections: IProfileSelections = {}
     data.forEach((selection) => {
-        const nominate = fillNominateData({
-            id: parseInt(selection.nominate_id, 10),
-            movieid: parseInt(selection.movie_id, 10),
-            personId: parseInt(selection.person_id, 10),
-        })
+        const nominate = fillNominateData(
+            {
+                id: parseInt(selection.nominate_id, 10),
+                movieid: parseInt(selection.movie_id, 10),
+                personId: parseInt(selection.person_id, 10),
+            },
+            selection.category_id
+        )
 
         selections[selection.category_id] = nominate
     })
