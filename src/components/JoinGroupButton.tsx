@@ -25,10 +25,12 @@ export default function JoinGroupButton({
         })
 
     return userId ? (
-        <Button onClick={handleClickJoin}>Unirse</Button>
+        <Button small onClick={handleClickJoin}>
+            Unirse
+        </Button>
     ) : (
         <ModalAuthButton redirect={`/group?id=${groupId}&add=true`}>
-            <Button>Unirse</Button>
+            <Button small>Unirse</Button>
         </ModalAuthButton>
     )
 }

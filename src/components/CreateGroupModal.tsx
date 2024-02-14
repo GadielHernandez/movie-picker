@@ -39,7 +39,9 @@ export default function CreateGroupModal({ creatorId }: CreateGroupModalProps) {
 
     return (
         <>
-            <Button onClick={() => setModalOpen(true)}>Crear grupo</Button>
+            <Button small onClick={() => setModalOpen(true)}>
+                Crear grupo
+            </Button>
             <Modal
                 title="Crear grupo"
                 isOpen={isModalOpen}

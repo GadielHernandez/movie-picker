@@ -1,5 +1,6 @@
 ---
 import ProfileInfo from './ProfileInfo'
+import Toolbar from './Toolbar.astro'
 import { type IProfile } from '../models/profile/profile.interfaces'
 
 interface Props {
@@ -25,13 +26,13 @@ const { profile, currentUserId, n_selections = 0 }: Props = Astro.props
             : 
                 <div class="">
                     <ProfileInfo client:load initialProfile={profile} currentUserId={currentUserId}/>
-                    <div class="flex justify-between p-4 border border-white/10 mb-5 rounded-lg text-xs font-bold">
-                        <p class=" uppercase">Mis predicciones <span class="text-amber-500">Oscars</span></p> 
+                    <Toolbar>
+                        <p class=" uppercase">{ currentUserId === profile.id && 'Mis' } Predicciones <span class="text-amber-500">Oscars</span></p> 
                         <div class="hidden md:flex gap-3 ">
                             <p>{n_selections} <span>elecciones</span></p>
                             <p>0 <span>aciertos</span></p>
                         </div> 
-                    </div>
+                    </Toolbar>
                 </div>
     }
 </header>

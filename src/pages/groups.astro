@@ -5,6 +5,7 @@ import { setUserSession } from '../lib/auth';
 import Group from '../components/Group.astro';
 import type { IGroup } from '../models/group/group.interfaces';
 import CreateGroupModal from '../components/CreateGroupModal';
+import Toolbar from '../components/Toolbar.astro';
 
 const userSession = await setUserSession(Astro.cookies);
 if (!userSession) {
@@ -20,19 +21,18 @@ const groups = await getGroups(userSession.id);
 	userSession={userSession}
 >
 	<main>
-		<header class="flex flex-col py-32 gap-4">
-            <div>
-                <h1 class="text-5xl font-light max-w-96 my-auto">
-                Mis Grupos
-                </h1>
-                <p class="font-semibold mt-3 text-neutral-400">
-                    Únete a un grupo o crea uno nuevo para comparar tus predicciones y ver quien es el mejor.
-                </p>
-            </div>
-            <div class="flex mt-6">
-                <CreateGroupModal client:idle creatorId={userSession.id}/>
-            </div>
+		<header class="py-20 md:py-16">
+            <h1 class="text-2xl font-bold max-w-96 my-auto">
+                Grupos
+            </h1>
+            <p class="text-sm mt-3 text-neutral-400">
+                Únete a un grupo o crea uno nuevo para comparar tus predicciones con tus amigos y ver quien es el mejor.
+            </p>
         </header>
+        <Toolbar>
+            <p class=" uppercase">Mis <span class="text-amber-500">grupos</span></p> 
+            <CreateGroupModal client:idle creatorId={userSession.id}/>
+        </Toolbar>
         <div class="grid grid-cols-1 gap-4">
             {
                 groups.map((group: IGroup)=> (
