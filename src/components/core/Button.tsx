@@ -7,6 +7,7 @@ interface Props {
     circle?: boolean
     enabled?: boolean
     loading?: boolean
+    small?: boolean
     href?: string
 }
 export default function Button({
@@ -16,6 +17,7 @@ export default function Button({
     circle,
     enabled = true,
     loading = false,
+    small = false,
     href,
 }: Props) {
     let classes =
@@ -35,6 +37,9 @@ export default function Button({
             'hover:bg-amber-600 active:bg-amber-800',
             'opacity-50 cursor-default'
         )
+
+    if (small)
+        classes = classes.replace('px-5 py-2.5 text-sm', 'px-2 py-1 text-xs')
 
     return (
         <a

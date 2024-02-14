@@ -64,23 +64,23 @@ export default function Category({
 
     return (
         <>
-            <article
+            <div
                 key={category.id}
-                className={`rounded-lg border border-amber-500 shadow-lg shadow-neutral-950 overflow-hidden row-span-1 col-span-${width} p-2 h-full group ${
+                className={`rounded-lg bg-gradient-to-r from-amber-500 to-amber-800 shadow-lg shadow-black overflow-hidden p-1 h-full group ${
                     enable && 'cursor-pointer'
                 }`}
                 onClick={() => enable && setOpen(true)}
-                style={{
-                    background:
-                        'repeating-conic-gradient(from 30deg,#0000 0 120deg,#332102 0 180deg) 200px 115.39999999999999px, repeating-conic-gradient(from 30deg,#f59e0c 0 60deg,#956006 0 120deg,#332102 0 180deg)',
-                    backgroundSize: '400px 231px',
-                }}
+                // style={{
+                //     background:
+                //         'repeating-conic-gradient(from 30deg,#0000 0 120deg,#332102 0 180deg) 200px 115.39999999999999px, repeating-conic-gradient(from 30deg,#f59e0c 0 60deg,#956006 0 120deg,#332102 0 180deg)',
+                //     backgroundSize: '400px 231px',
+                // }}
             >
-                <main className="relative border border-amber-500 rounded-lg h-full overflow-hidden">
-                    <div className="bg-gradient-to-b from-50% from-transparent to-neutral-900 z-10 absolute bottom-0 left-0 top-0 h-full w-full" />
+                <main className="relative rounded-lg h-full overflow-hidden">
+                    <div className="bg-gradient-to-b from-50% from-transparent to-neutral-950 z-10 absolute bottom-0 left-0 top-0 h-full w-full" />
                     <div
                         className={`background transition-scale absolute bottom-0 left-0 top-0 h-full w-full bg-neutral-900 bg-cover bg-no-repeat duration-1000 ease-in-out group-hover:scale-110
-                        bg-[center_top_40%] 
+                        bg-[center_top_40%]
                     `}
                         style={{
                             backgroundImage: image
@@ -115,7 +115,7 @@ export default function Category({
                         </svg>
                     </div>
                 </main>
-            </article>
+            </div>
 
             <CategoryOptions
                 category={category}

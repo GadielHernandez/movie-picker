@@ -2,12 +2,12 @@ import Modal from './core/Modal'
 import { useState } from 'react'
 
 interface AvatarProps {
-    initialAvatar: string
+    initialAvatar?: string
     onSaveImage: (image: string) => void
 }
 export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
     const [isModalOpen, setModalOpen] = useState(false)
-    const [image, setImage] = useState(initialAvatar)
+    const [image, setImage] = useState(initialAvatar || 'avatar-4.png')
 
     const avatarList = [
         'avatar-1.png',
@@ -26,21 +26,38 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
         'avatar-14.png',
     ]
 
-    const handleSaveImage = () => {
+    const handleSaveImage = async () => {
         setModalOpen(false)
+        await saveAvatar(image)
         onSaveImage(image)
     }
+
+    const saveAvatar = (image: string) =>
+        new Promise((resolve, reject) => {
+            fetch(`/api/profile`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    image,
+                }),
+            })
+                .then((response) => response.json())
+                .then((response) => resolve(response))
+                .catch((err) => reject(err))
+        })
 
     const openModal = () => setModalOpen(true)
     const closeModal = () => {
         setModalOpen(false)
-        setImage(initialAvatar)
+        setImage(initialAvatar || 'avatar-4.png')
     }
 
     return (
         <>
             <div
-                className="flex relative h-28 w-28 rounded-full overflow-hidden group cursor-pointer"
+                className="flex relative h-24 w-24 rounded-full overflow-hidden group cursor-pointer"
                 onClick={openModal}
             >
                 <div
@@ -79,7 +96,7 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                         <img
                             src={`/img/avatar/${image}`}
                             alt="Selected avatar"
-                            className="h-44 w-44 rounded-full "
+                            className="h-32 w-32 rounded-full "
                         />
                     </div>
 

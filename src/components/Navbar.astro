@@ -9,20 +9,27 @@ interface Props {
 
 const { user }: Props = Astro.props
 ---
-<nav class="fixed flex h-16 py-3 justify-between items-center px-6 md:px-12 lg:px-44 top-0 left-0 w-full z-50">
+<nav class="fixed flex h-16 py-3 justify-between items-center px-6 md:px-12 lg:px-44 top-0 left-0 w-full z-50 border-b border-black">
     <div>
         <a href="/">
             <img src="/img/full_icon.png" alt="Logo Movie Picker" class="h-8"/>
         </a>
     </div>
-    <div class="flex gap-3">
+    <div class="flex items-center gap-3">
+        <a href="/movies" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
+            Mis elecciones
+        </a>
+        <a href="/movies" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
+            Grupos
+        </a>
         { 
             user 
             ? <Button
                 outline
+                small
                 href="/api/auth/signout"
                 >  
-                    Cerrar sesiòn
+                    <span class="uppercase">Cerrar sesiòn</span>
                 </Button>
             : <ModalAuthButton client:idle/>
         }
@@ -34,10 +41,12 @@ const { user }: Props = Astro.props
         const nav = document.querySelector('nav')
         if (window.scrollY > 100) {
             nav?.classList.add('bg-neutral-900')
-            nav?.classList.add('shadow-xl')
+            nav?.classList.add('shadow-lg')
+            nav?.classList.add('shadow-black')
         } else {
             nav?.classList.remove('bg-neutral-900')
-            nav?.classList.remove('shadow-xl')
+            nav?.classList.remove('shadow-lg')
+            nav?.classList.add('shadow-black')
         }
     }
     window.addEventListener('scroll', scrollHander)

@@ -3,15 +3,15 @@ import type { INominated } from '../categories/category.interfaces'
 export interface IProfile {
     id: string
     name: string
-    image: string
+    image?: string
     description: string
     instagram?: string
     tiktok?: string
     twitter?: string
-    letterbox?: string
+    letterboxd?: string
 }
 
-export type UpdateProfileData = Omit<IProfile, 'id' | 'image'>
+export type UpdateProfileData = Omit<IProfile, 'id'>
 
 export interface IProfileSelectionDocument {
     user_id: string

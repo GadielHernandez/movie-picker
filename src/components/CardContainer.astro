@@ -1,11 +1,11 @@
 ---
 interface Props {
-    width?: number;
+    relevant?: boolean;
 }
 
-const { width = 1 } = Astro.props;
+const { relevant = false } = Astro.props;
 
-const clases = ` shadow-lg overflow-hidden row-span-1 col-span-${width} p-6`;
+const clases = `overflow-hidden row-span-1 ${relevant && 'col-span-2'} `;
 ---
 <article class={clases}>
     <slot />

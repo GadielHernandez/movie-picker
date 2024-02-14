@@ -23,7 +23,9 @@ export default function EditProfile({
     const [instagram, setInstagram] = useState(initialProfile.instagram || '')
     const [tiktok, setTiktok] = useState(initialProfile.tiktok || '')
     const [twitter, setTwitter] = useState(initialProfile.twitter || '')
-    const [letterbox, setLetterbox] = useState(initialProfile.letterbox || '')
+    const [letterboxd, setLetterboxd] = useState(
+        initialProfile.letterboxd || ''
+    )
 
     const DESCRIPTION_MAX_LENGTH = 100
 
@@ -34,11 +36,10 @@ export default function EditProfile({
             instagram,
             tiktok,
             twitter,
-            letterbox,
+            letterboxd,
         }
 
         const result = await sendUpdateUser(newProfile)
-        console.log(result)
 
         onNewProfileData(newProfile)
         setModalOpen(false)
@@ -51,7 +52,7 @@ export default function EditProfile({
         setInstagram(initialProfile.instagram || '')
         setTiktok(initialProfile.tiktok || '')
         setTwitter(initialProfile.twitter || '')
-        setLetterbox(initialProfile.letterbox || '')
+        setLetterboxd(initialProfile.letterboxd || '')
         setModalOpen(false)
     }
 
@@ -71,7 +72,9 @@ export default function EditProfile({
 
     return (
         <>
-            <Button onClick={openModal}>Editar Perfil</Button>
+            <Button onClick={openModal} small>
+                Editar Perfil
+            </Button>
             <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
@@ -122,12 +125,12 @@ export default function EditProfile({
                         value={twitter}
                     />
                     <Input
-                        placeholder="Link de perfil de Letterbox"
+                        placeholder="Link de perfil de Letterboxd"
                         type="text"
-                        id="letterbox"
+                        id="letterboxd"
                         icon="letterbox.svg"
-                        onChange={(e) => setLetterbox(e.target.value)}
-                        value={letterbox}
+                        onChange={(e) => setLetterboxd(e.target.value)}
+                        value={letterboxd}
                     />
                 </div>
             </Modal>

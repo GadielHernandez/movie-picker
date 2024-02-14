@@ -3,6 +3,7 @@ import HeaderLayout from '../layouts/HeaderLayout.astro';
 import Header from '../components/Header.astro';
 import Grid from '../components/Grid.astro';
 import Category from '../components/Category.tsx';
+import CardContainer from '../components/CardContainer.astro';
 
 import { fetchCategories, fillNominateData } from '../models/categories/category.services';
 import { setUserSession } from '../lib/auth';
@@ -26,8 +27,11 @@ if (idProfile && currentProfile?.id !== idProfile) {
 }
 
 let selections: IProfileSelections = {}
-if(currentProfile) 
+let n_selections = 0;
+if(currentProfile) {
 	selections = await getProfileSelections(currentProfile.id);
+	n_selections = Object.keys(selections).length;
+}
 ---
 
 <HeaderLayout 
@@ -35,18 +39,22 @@ if(currentProfile)
 	description="Pagina para hacer quiniela o predicciones de los ganadores de los Oscars 2024" 
 	userSession={userSession}
 >
-	<main>
-		<Header profile={currentProfile} currentUserId={userSession?.id}/>
+	<main class="pb-8">
+		<Header profile={currentProfile} currentUserId={userSession?.id} n_selections={n_selections}/>
 		<Grid>
 			{categories.data.map((category) => (
-				<Category 
-					client:load
-					user={userSession?.id}
-					category={category}
-					width={category.relevant ? 2 : 1}
-					userSelection={selections[category.id]}
-					enable={currentProfile?.id === userSession?.id}
-				/>
+				<CardContainer 
+					relevant={category.relevant}
+				>
+					<Category 
+						client:load
+						user={userSession?.id}
+						category={category}
+						width={category.relevant ? 2 : 1}
+						userSelection={selections[category.id]}
+						enable={currentProfile?.id === userSession?.id}
+					/>
+				</CardContainer>
 			))}
 		</Grid>
 	</main>

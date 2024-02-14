@@ -33,7 +33,7 @@ export async function getProfile(id: string | null) {
         instagram: user.instagram,
         twitter: user.twitter,
         tiktok: user.tiktok,
-        letterbox: user.letterboxd,
+        letterboxd: user.letterboxd,
     }
 
     return profile
