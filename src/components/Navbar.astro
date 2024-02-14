@@ -15,31 +15,76 @@ const { user }: Props = Astro.props
             <img src="/img/full_icon.png" alt="Logo Movie Picker" class="h-8"/>
         </a>
     </div>
-    <div class="flex items-center gap-3">
-        <a href="/movies" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
+    <div class="hidden md:flex items-center gap-3">
+        <a href="/" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
             Mis elecciones
         </a>
-        <a href="/movies" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
+        <a href="/groups" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
             Grupos
         </a>
-        { 
-            user 
-            ? <Button
+        {   user && 
+            <Button
                 outline
                 small
                 href="/api/auth/signout"
-                >  
+            >  
                     <span class="uppercase">Cerrar sesiòn</span>
-                </Button>
-            : <ModalAuthButton client:idle/>
+            </Button>
+        }
+        {
+            !user &&
+            <ModalAuthButton client:idle/>
         }
     </div>
+    <div class="flex md:hidden items-center justify-center hover:text-amber-500">
+        {
+            !user &&
+            <ModalAuthButton client:idle/>
+        }
+        {
+            user &&
+            <button class="menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        }
+        
+    </div>
 </nav>
+<div class="sub-menu fixed bg-neutral-900 z-50 top-16 left-0 w-full px-6 py-3 border-b border-black -translate-y-56 transition-all opacity-0 duration-500">
+    <ul>
+        <li class="flex">
+            <a 
+                class="py-4 px-2 text-xs font-bold uppercase hover:text-amber-500 hover:bg-neutral-950 rounded-lg w-full" 
+                href="/"
+            >
+                Mis elecciones
+            </a>
+        </li>
+        <li class="flex">
+            <a 
+                class="py-4 px-2 text-xs font-bold uppercase hover:text-amber-500 hover:bg-neutral-950 rounded-lg w-full" 
+                href="/groups"
+            >
+                Mis grupos
+            </a>
+        </li>
+        <li class="flex">
+            <a 
+                class="py-4 px-2 text-xs font-bold uppercase hover:text-amber-500 hover:bg-neutral-950 rounded-lg w-full" 
+                href="/api/auth/signout"
+            >
+                Cerrar sesiòn
+            </a>
+        </li>
+    </ul>
+</div>
 
 <script>
     const scrollHander = () => {
         const nav = document.querySelector('nav')
-        if (window.scrollY > 100) {
+        if (window.scrollY > 70) {
             nav?.classList.add('bg-neutral-900')
             nav?.classList.add('shadow-lg')
             nav?.classList.add('shadow-black')
@@ -50,4 +95,12 @@ const { user }: Props = Astro.props
         }
     }
     window.addEventListener('scroll', scrollHander)
+
+    const toggleMenu = () => {
+        const menu = document.querySelector('div.sub-menu')
+        menu?.classList.toggle('-translate-y-56')
+        menu?.classList.toggle('opacity-0')
+    }
+    const menuButton = document.querySelector('button.menu')
+    menuButton?.addEventListener('click', toggleMenu)
 </script>

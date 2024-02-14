@@ -24,7 +24,11 @@ export default function ModalAuthButton({
     return (
         <>
             <span onClick={() => setModalOpen(true)}>
-                {children || <Button>Inicia sesión</Button>}
+                {children || (
+                    <Button small>
+                        <span className="uppercase">Inicia sesión</span>
+                    </Button>
+                )}
             </span>
             <Modal
                 title={mode === modes.SIGNIN ? 'Inicia sesión' : 'Regístrate'}
