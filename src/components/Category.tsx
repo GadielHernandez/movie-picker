@@ -28,7 +28,7 @@ export default function Category({
     const [open, setOpen] = useState(false)
 
     useEffect(() => {
-        if (!user) {
+        if (!user && enable) {
             const guestSelection = getGuestSelection(category.id)
             if (guestSelection) setSelection(guestSelection)
             return

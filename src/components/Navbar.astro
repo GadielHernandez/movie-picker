@@ -16,10 +16,10 @@ const { user }: Props = Astro.props
         </a>
     </div>
     <div class="hidden md:flex items-center gap-3">
-        <a href="/" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
+        <a href="/" class=`${user ? 'block' : 'hidden '} text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500`>
             Mis elecciones
         </a>
-        <a href="/groups" class="text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500">
+        <a href="/groups" class=`${user ? 'block' : 'hidden '} text-white px-2 py-1 text-xs font-bold uppercase hover:text-amber-500`>
             Grupos
         </a>
         {   user && 
