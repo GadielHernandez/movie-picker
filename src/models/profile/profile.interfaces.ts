@@ -5,6 +5,7 @@ export interface IProfile {
     name: string
     image?: string
     description: string
+    verified: boolean
     instagram?: string
     tiktok?: string
     twitter?: string

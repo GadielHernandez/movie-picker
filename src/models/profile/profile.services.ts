@@ -30,6 +30,7 @@ export async function getProfile(id: string | null) {
         name: user.name,
         image: user.image,
         description: user.description,
+        verified: user.verified,
         instagram: user.instagram,
         twitter: user.twitter,
         tiktok: user.tiktok,
