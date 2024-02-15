@@ -125,6 +125,6 @@ if (userSession && add === 'true' && !userInGroup) {
     tabSelected(initalTab, 0)
 
     tabs.forEach((tab, index) => {
-        tab.addEventListener('click', (e) => tabSelected(tab, index));
+        tab.addEventListener('click', () => tabSelected(tab, index));
     });
 </script>

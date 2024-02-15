@@ -1,5 +1,4 @@
 import type { AstroCookies } from 'astro'
-import type { IProfile } from '../models/profile/profile.interfaces'
 import { getProfile } from '../models/profile/profile.services'
 import supabase from './supabase'
 

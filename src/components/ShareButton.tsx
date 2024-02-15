@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Button from './core/Button'
 
 interface ShareButtonProps {
     userId: string

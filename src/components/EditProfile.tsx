@@ -39,7 +39,7 @@ export default function EditProfile({
             letterboxd,
         }
 
-        const result = await sendUpdateUser(newProfile)
+        await sendUpdateUser(newProfile)
 
         onNewProfileData(newProfile)
         setModalOpen(false)

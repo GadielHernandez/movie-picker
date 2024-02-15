@@ -14,7 +14,7 @@ export const POST: APIRoute = async ({ request }) => {
             status: 404,
         })
 
-    const { data, error } = await updateCurrentProfile(
+    const { error } = await updateCurrentProfile(
         user.id,
         body as UpdateProfileData
     )

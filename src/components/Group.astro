@@ -6,7 +6,7 @@ interface Props {
     members?: number;
 }
 
-const { id, title, description, members } = Astro.props;
+const { id, title, description } = Astro.props;
 ---
 <article class="rounded-lg bg-neutral-800 p-6 col-span-1 hover:shadow-xl shadow-black group cursor-pointer">
     <a href={`/group?id=${id}`} class="flex justify-between gap-4">
