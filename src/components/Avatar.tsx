@@ -101,10 +101,12 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                     </div>
 
                     <div className="grid auto-rows-[100px] grid-cols-2 md:grid-cols-4 gap-8 border rounded-lg px-4 py-8">
-                        {avatarList.map((avatar) => (
-                            <div className="flex items-center justify-center">
+                        {avatarList.map((avatar, index) => (
+                            <div
+                                className="flex items-center justify-center"
+                                key={index}
+                            >
                                 <img
-                                    key={avatar}
                                     src={`/img/avatar/${avatar}`}
                                     alt="Selected avatar"
                                     className={`h-28 w-28 rounded-full cursor-pointer ${
