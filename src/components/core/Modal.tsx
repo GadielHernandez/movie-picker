@@ -56,7 +56,7 @@ const Modal = ({
                         </svg>
                     </button>
                 </header>
-                <main className="p-4 text-left max-h-[70vh] overflow-scroll">
+                <main className="p-4 text-left max-h-[80vh] overflow-scroll">
                     {children}
                 </main>
                 <footer

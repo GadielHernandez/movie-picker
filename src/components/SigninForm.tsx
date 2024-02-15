@@ -81,7 +81,7 @@ export default function SigninForm({ redirect }: RegisterFormProps) {
                     setPassword(e.target.value)
                 }}
             />
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
                 <div>
                     <p
                         className={`${

@@ -3,6 +3,7 @@ import Modal from './core/Modal'
 import RegisterForm from './RegisterForm'
 import SigninForm from './SigninForm'
 import Button from './core/Button'
+import GoogleAuthButton from './GoogleAuthButton'
 
 enum modes {
     SIGNIN = 'SIGNIN',
@@ -36,45 +37,43 @@ export default function ModalAuthButton({
                 onClose={() => setModalOpen(false)}
                 footer={false}
             >
-                {mode === modes.SIGNIN && (
-                    <div className="px-4">
-                        <img
-                            src="/img/full_icon.png"
-                            alt="Logo Movie Picker"
-                            className="my-8 h-14 md:h-20"
-                        />
-                        <SigninForm redirect={redirect} />
-                        <p className="text-sm text-neutral-400 mt-6 text-center">
-                            ¿No tienes una cuenta? &nbsp;
-                            <a
-                                className="text-white hover:text-amber-500 cursor-pointer"
-                                onClick={() => setMode(modes.REGISTER)}
-                            >
-                                Registrate
-                            </a>
-                        </p>
-                    </div>
-                )}
+                <div className="px-0 md:px-4">
+                    <img
+                        src="/img/full_icon.png"
+                        alt="Logo Movie Picker"
+                        className="mt-8 mb-12 h-14 md:h-16"
+                    />
 
-                {mode === modes.REGISTER && (
-                    <div className="px-4">
-                        <img
-                            src="/img/full_icon.png"
-                            alt="Logo Movie Picker"
-                            className="my-8 h-14 md:h-20"
-                        />
-                        <RegisterForm redirect={redirect} />
-                        <p className="text-sm text-neutral-400 mt-6 text-center">
-                            ¿Ya tienes una cuenta? &nbsp;
-                            <a
-                                className="text-white hover:text-amber-500 cursor-pointer"
-                                onClick={() => setMode(modes.SIGNIN)}
-                            >
-                                Inicia sesión
-                            </a>
-                        </p>
-                    </div>
-                )}
+                    {mode === modes.SIGNIN && (
+                        <>
+                            <SigninForm redirect={redirect} />
+                            <p className="text-sm text-neutral-400 mt-6 text-center">
+                                ¿No tienes una cuenta? &nbsp;
+                                <a
+                                    className="text-white hover:text-amber-500 cursor-pointer"
+                                    onClick={() => setMode(modes.REGISTER)}
+                                >
+                                    Registrate
+                                </a>
+                            </p>
+                        </>
+                    )}
+
+                    {mode === modes.REGISTER && (
+                        <>
+                            <RegisterForm redirect={redirect} />
+                            <p className="text-sm text-neutral-400 mt-6 text-center">
+                                ¿Ya tienes una cuenta? &nbsp;
+                                <a
+                                    className="text-white hover:text-amber-500 cursor-pointer"
+                                    onClick={() => setMode(modes.SIGNIN)}
+                                >
+                                    Inicia sesión
+                                </a>
+                            </p>
+                        </>
+                    )}
+                </div>
             </Modal>
         </>
     )

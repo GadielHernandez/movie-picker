@@ -42,7 +42,7 @@ export default function input({
     }
 
     return (
-        <div className="mb-5">
+        <div className="mb-2">
             {label && (
                 <label
                     htmlFor="description"
