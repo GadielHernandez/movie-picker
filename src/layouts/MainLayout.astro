@@ -1,5 +1,6 @@
 ---
 import '@fontsource/poppins';
+import Footer from '../components/Footer.astro';
 import  SpeedInsights  from "@vercel/speed-insights/astro"
 
 interface Props {
@@ -23,6 +24,7 @@ const { title, description } = Astro.props;
 	<body class="bg-neutral-900 leading-relaxed text-slate-50 antialiased selection:bg-yellow-500 px-6 md:px-12 lg:px-44 ">
 		<SpeedInsights />
 		<slot />
+		<Footer />
 	</body>
 </html>
 <style is:global>
