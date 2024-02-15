@@ -48,7 +48,7 @@ export default function CategoryOptions({
             onClose={closeModal}
             onCancel={closeModal}
             onSave={handleOnSave}
-            title="Selecciona una opciòn"
+            title={category.title}
         >
             <div
                 className={`grid grid-cols-2 md:grid-cols-3 gap-4 rounded-lg px-4 py-8`}

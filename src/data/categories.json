@@ -110,7 +110,7 @@
                 },
                 {
                     "id": 2,
-                    "movieid": null,
+                    "movieid": 558915,
                     "personId": 1075037,
                     "name": "Danielle Brooks"
                 },
@@ -122,13 +122,13 @@
                 },
                 {
                     "id": 4,
-                    "movieid": null,
+                    "movieid": 895549,
                     "personId": 1038,
                     "name": "Jodie Foster"
                 },
                 {
                     "id": 5,
-                    "movieId": 267960,
+                    "movieid": 267960,
                     "personId": 1180099,
                     "name": "Da’vine Joy Randolph"
                 }
@@ -142,13 +142,13 @@
             "nominates": [
                 {
                     "id": 1,
-                    "movieId": 915935,
+                    "movieid": 915935,
                     "personId": 1175620,
                     "name": "Justine Triet"
                 },
                 {
                     "id": 2,
-                    "movieId": 466420,
+                    "movieid": 466420,
                     "personId": 1032,
                     "name": "Martin Scorsese"
                 },
@@ -160,13 +160,13 @@
                 },
                 {
                     "id": 4,
-                    "movieId": 792307,
+                    "movieid": 792307,
                     "personId": 122423,
                     "name": "Yorgos Lanthimos"
                 },
                 {
                     "id": 5,
-                    "movieId": 467244,
+                    "movieid": 467244,
                     "personId": 66728,
                     "name": "Jonathan Glazer"
                 }
@@ -180,19 +180,19 @@
             "nominates": [
                 {
                     "id": 1,
-                    "movieid": null,
+                    "movieid": 895549,
                     "personId": 516,
                     "name": "Annette Bening"
                 },
                 {
                     "id": 2,
-                    "movieId": 466420,
+                    "movieid": 466420,
                     "personId": 1183917,
                     "name": "Lily Gladstone"
                 },
                 {
                     "id": 3,
-                    "movieId": 915935,
+                    "movieid": 915935,
                     "personId": 7152,
                     "name": "Sandra Hüller"
                 },
@@ -218,7 +218,7 @@
             "nominates": [
                 {
                     "id": 1,
-                    "movieid": null,
+                    "movieid": 991708,
                     "name": "El Conde"
                 },
                 {
@@ -285,27 +285,32 @@
                 {
                     "id": 1,
                     "movieid": 523607,
-                    "name": "Bradley Cooper"
+                    "name": "Bradley Cooper",
+                    "personId": 51329
                 },
                 {
                     "id": 2,
-                    "movieid": null,
-                    "name": "Colman Domingo"
+                    "movieid": 898713,
+                    "name": "Colman Domingo",
+                    "personId": 91671
                 },
                 {
                     "id": 3,
                     "movieid": 267960,
-                    "name": "Paul Giamatti"
+                    "name": "Paul Giamatti",
+                    "personId": 13242
                 },
                 {
                     "id": 4,
                     "movieid": 872585,
-                    "name": "Cillian Murphy"
+                    "name": "Cillian Murphy",
+                    "personId": 2037
                 },
                 {
                     "id": 5,
                     "movieid": 1056360,
-                    "name": "Jeffrey Wright"
+                    "name": "Jeffrey Wright",
+                    "personId": 2954
                 }
             ]
         },
@@ -398,7 +403,7 @@
                 },
                 {
                     "id": 4,
-                    "movieid": null,
+                    "movieid": 839369,
                     "name": "May December"
                 },
                 {
@@ -426,7 +431,7 @@
                 },
                 {
                     "id": 3,
-                    "movieid": null,
+                    "movieid": 753342,
                     "name": "Napoleón"
                 },
                 {
@@ -492,7 +497,7 @@
                 },
                 {
                     "id": 3,
-                    "movieid": null,
+                    "movieid": 753342,
                     "name": "Napoleón"
                 },
                 {
@@ -520,7 +525,7 @@
                 },
                 {
                     "id": 2,
-                    "movieId": 335977,
+                    "movieid": 335977,
                     "name": "Indiana Jones and the Dial of Destiny"
                 },
                 {
@@ -544,7 +549,7 @@
             "id": "category-14",
             "title": "Mejor canción",
             "relevant": false,
-            "type": "SONG",
+            "type": "MOVIES",
             "nominates": [
                 {
                     "id": 1,
@@ -558,18 +563,18 @@
                 },
                 {
                     "id": 3,
-                    "movieId": 1171816,
-                    "name": "It Never Went Away de American Symphony"
+                    "movieid": 1171816,
+                    "name": "It Never Went Away"
                 },
                 {
                     "id": 4,
-                    "movieId": 466420,
+                    "movieid": 466420,
                     "name": "Wahzhazhe (A Song for My People)"
                 },
                 {
                     "id": 5,
                     "movieid": 346698,
-                    "name": "What I was Made For de Barbie"
+                    "name": "What I was Made For"
                 }
             ]
         },
@@ -591,7 +596,7 @@
                 },
                 {
                     "id": 3,
-                    "movieId": 575264,
+                    "movieid": 575264,
                     "name": "Mission: Impossible - Dead Reckoning Part One"
                 },
                 {
@@ -662,7 +667,7 @@
                 },
                 {
                     "id": 4,
-                    "movieId": 575264,
+                    "movieid": 575264,
                     "name": "Mission: Impossible - Dead Reckoning Part One"
                 },
                 {
@@ -713,28 +718,28 @@
             "nominates": [
                 {
                     "id": 1,
-                    "movieid": null,
+                    "movieid": 950810,
                     "name": "Letter to a Pig"
                 },
                 {
                     "id": 2,
-                    "movieid": null,
+                    "movieid": 1040371,
                     "name": "Ninety-Five Senses"
                 },
                 {
                     "id": 3,
-                    "movieid": null,
+                    "movieid": 1140605,
                     "name": "Our Uniform"
                 },
                 {
                     "id": 4,
-                    "movieid": null,
+                    "movieid": 950822,
                     "name": "Pachyderme"
                 },
                 {
                     "id": 5,
-                    "movieId": null,
-                    "name": "War is Over. Inspired by the Music of John and Yoko"
+                    "movieid": 1214020,
+                    "name": "War is Over!"
                 }
             ]
         },
@@ -746,27 +751,27 @@
             "nominates": [
                 {
                     "id": 1,
-                    "movieid": null,
+                    "movieid": 1186227,
                     "name": "The ABCs of Book Banning"
                 },
                 {
                     "id": 2,
-                    "movieid": null,
+                    "movieid": 1186247,
                     "name": "The Barber of Little Rock"
                 },
                 {
                     "id": 3,
-                    "movieid": null,
+                    "movieid": 1203439,
                     "name": "Island in Between"
                 },
                 {
                     "id": 4,
-                    "movieid": null,
+                    "movieid": 1171861,
                     "name": "The Last Repair Shop"
                 },
                 {
                     "id": 5,
-                    "movieid": null,
+                    "movieid": 1085779,
                     "name": "Nǎi Nai and Wài Pó"
                 }
             ]
@@ -779,27 +784,27 @@
             "nominates": [
                 {
                     "id": 1,
-                    "movieid": null,
+                    "movieid": 1169455,
                     "name": "The After"
                 },
                 {
                     "id": 2,
-                    "movieid": null,
+                    "movieid": 1084765,
                     "name": "Invincible"
                 },
                 {
                     "id": 3,
-                    "movieid": null,
+                    "movieid": 971468,
                     "name": "Knight of Fortune"
                 },
                 {
                     "id": 4,
-                    "movieid": null,
+                    "movieid": 930094,
                     "name": "Red, White and Blue"
                 },
                 {
                     "id": 5,
-                    "movieid": null,
+                    "movieid": 923939,
                     "name": "The Wonderful Story of Henry Sugar"
                 }
             ]
