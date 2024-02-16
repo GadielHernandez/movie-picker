@@ -42,6 +42,7 @@ export default function ProfileInfo({
                 <Avatar
                     initialAvatar={profile?.image}
                     onSaveImage={handleNewProfileImage}
+                    enable={profile.id === currentUserId}
                 />
                 <div>
                     <div className="flex gap-2 items-center">
@@ -66,7 +67,7 @@ export default function ProfileInfo({
                         )}
                         {profile.id === currentUserId && (
                             <>
-                                <ShareButton userId={profile.id} />
+                                <ShareButton id={profile.id} type="user" />
                                 <div className="flex">
                                     <EditProfile
                                         initialProfile={profile}

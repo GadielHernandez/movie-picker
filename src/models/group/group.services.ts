@@ -60,6 +60,7 @@ export async function getGroupMembers(groupId: number) {
             name: users.name,
             image: users.image,
             description: users.description,
+            verified: users.verified,
         } as IProfile
     })
 }

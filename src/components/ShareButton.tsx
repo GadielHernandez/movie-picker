@@ -1,26 +1,31 @@
 import { useState } from 'react'
 
 interface ShareButtonProps {
-    userId: string
+    id: string
+    type: 'user' | 'group'
 }
 
-export default function ShareButton({ userId }: ShareButtonProps) {
+export default function ShareButton({ id, type }: ShareButtonProps) {
     const [toast, setToast] = useState('invisible opacity-0 -translate-y-14')
+    const baseUrl = 'https://movie-picker.gadhdz.dev'
+    const link = type === 'user' ? `${baseUrl}?user=` : `${baseUrl}/group?id=`
+    const text =
+        type === 'user'
+            ? 'Estas son mis predicciones para los Oscars 2024'
+            : 'Unete a mi grupo para las predicciones de los Oscars 2024'
 
     const handleShare = async () => {
         if (navigator.share) {
             await navigator.share({
                 title: 'Movie Picker',
-                text: 'Estas son mis predicciones para los Oscars 2024',
-                url: `https://oscars-pools.com/?user=${userId}`,
+                text,
+                url: `${link}${id}`,
             })
             return
         }
 
         if (navigator.clipboard) {
-            await navigator.clipboard.writeText(
-                `https://oscars-pools.com/?user=${userId}`
-            )
+            await navigator.clipboard.writeText(`${link}${id}`)
             setToast('opacity-100')
             setTimeout(() => {
                 setToast('invisible opacity-0 -translate-y-14')

@@ -4,10 +4,15 @@ import { useState } from 'react'
 interface AvatarProps {
     initialAvatar?: string
     onSaveImage: (image: string) => void
+    enable?: boolean
 }
-export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
+export default function Avatar({
+    initialAvatar,
+    onSaveImage,
+    enable = false,
+}: AvatarProps) {
     const [isModalOpen, setModalOpen] = useState(false)
-    const [image, setImage] = useState(initialAvatar || 'avatar-4.png')
+    const [image, setImage] = useState(initialAvatar || 'avatar-7.png')
 
     const avatarList = [
         'avatar-1.png',
@@ -48,16 +53,20 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                 .catch((err) => reject(err))
         })
 
-    const openModal = () => setModalOpen(true)
+    const openModal = () => {
+        if (enable) setModalOpen(true)
+    }
     const closeModal = () => {
         setModalOpen(false)
-        setImage(initialAvatar || 'avatar-4.png')
+        setImage(initialAvatar || 'avatar-7.png')
     }
 
     return (
         <>
             <div
-                className="flex relative h-24 w-24 rounded-full overflow-hidden group cursor-pointer"
+                className={`flex relative h-24 w-24 rounded-full overflow-hidden group ${
+                    enable && 'cursor-pointer'
+                }`}
                 onClick={openModal}
             >
                 <div
@@ -66,7 +75,11 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                         backgroundImage: `url('/img/avatar/${image}')`,
                     }}
                 ></div>
-                <div className="absolute hidden m-auto text-white font-extrabold group-hover:block top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div
+                    className={`absolute hidden m-auto text-white font-extrabold top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+                        enable && 'group-hover:block'
+                    }`}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -109,7 +122,7 @@ export default function Avatar({ initialAvatar, onSaveImage }: AvatarProps) {
                                 <img
                                     src={`/img/avatar/${avatar}`}
                                     alt="Selected avatar"
-                                    className={`h-28 w-28 rounded-full cursor-pointer ${
+                                    className={`h-24 w-24 rounded-full cursor-pointer ${
                                         avatar === image &&
                                         'ring-8 ring-amber-400'
                                     }`}
