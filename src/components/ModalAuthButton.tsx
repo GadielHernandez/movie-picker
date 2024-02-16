@@ -3,7 +3,6 @@ import Modal from './core/Modal'
 import RegisterForm from './RegisterForm'
 import SigninForm from './SigninForm'
 import Button from './core/Button'
-import GoogleAuthButton from './GoogleAuthButton'
 
 enum modes {
     SIGNIN = 'SIGNIN',

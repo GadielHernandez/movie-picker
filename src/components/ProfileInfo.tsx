@@ -24,6 +24,7 @@ export default function ProfileInfo({
             ...newData,
             id: profile.id,
             image: profile.image,
+            verified: profile.verified,
         }
         setProfile(newProfile)
     }

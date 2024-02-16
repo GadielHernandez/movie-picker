@@ -12,7 +12,7 @@ export interface IProfile {
     letterboxd?: string
 }
 
-export type UpdateProfileData = Omit<IProfile, 'id'>
+export type UpdateProfileData = Omit<IProfile, 'id' | 'verified'>
 
 export interface IProfileSelectionDocument {
     user_id: string
