@@ -26,6 +26,9 @@ export default function Category({
     const [selection, setSelection] = useState(userSelection)
     const [image, setImage] = useState('')
     const [open, setOpen] = useState(false)
+    const [linkImage, setLinkImage] = useState(
+        'https://image.tmdb.org/t/p/original'
+    )
 
     useEffect(() => {
         if (!user && enable) {
@@ -61,6 +64,22 @@ export default function Category({
         setImage(newImage)
     }, [selection])
 
+    function handleWindowSizeChange() {
+        const mdBreakpoint = 768
+        const link =
+            window.innerWidth < mdBreakpoint
+                ? 'https://image.tmdb.org/t/p/w500'
+                : 'https://image.tmdb.org/t/p/original'
+        setLinkImage(link)
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange)
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange)
+        }
+    }, [])
+
     return (
         <>
             <div
@@ -69,24 +88,18 @@ export default function Category({
                     enable && 'cursor-pointer'
                 }`}
                 onClick={() => enable && setOpen(true)}
-                // style={{
-                //     background:
-                //         'repeating-conic-gradient(from 30deg,#0000 0 120deg,#332102 0 180deg) 200px 115.39999999999999px, repeating-conic-gradient(from 30deg,#f59e0c 0 60deg,#956006 0 120deg,#332102 0 180deg)',
-                //     backgroundSize: '400px 231px',
-                // }}
             >
                 <main className="relative rounded-lg h-full overflow-hidden">
                     <div className="bg-gradient-to-b from-50% from-transparent to-neutral-950 z-10 absolute bottom-0 left-0 top-0 h-full w-full" />
                     <div
-                        className={`background transition-scale absolute bottom-0 left-0 top-0 h-full w-full bg-neutral-900 bg-cover bg-no-repeat duration-1000 ease-in-out group-hover:scale-110
-                        bg-[center_top_40%]
-                    `}
+                        className="background transition-scale absolute bottom-0 left-0 top-0 h-full w-full bg-neutral-900 bg-cover bg-no-repeat duration-1000 ease-in-out group-hover:scale-110
+                        bg-[center_top_40%]"
                         style={{
                             backgroundImage: image
-                                ? `url('https://image.tmdb.org/t/p/original${image}')`
+                                ? `url('${linkImage}${image}')`
                                 : 'unset',
                         }}
-                    ></div>
+                    />
                     <div className="absolute bottom-3 left-3 right-3 p-0 md:p-3 tracking-wide rounded-lg z-20">
                         <h2 className="text-xs md:text-lg text-white w-full font-bold">
                             {selection && selection.name}
